@@ -1,2 +1,0 @@
-cohort,cutoff_method,cutoff,n,excluded_n,odds_ratio_high_vs_low,ci_lower,ci_upper,p_value,interpretation,family_adjusted_p
-"shh","optimal",9.24269776790801,160,63,0.761706101659556,NA,NA,NA,"Exploratory: threshold selected using survival in overlapping patients; not an independent validation",NA

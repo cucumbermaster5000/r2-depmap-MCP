@@ -1,2 +1,0 @@
-cohort,cutoff_method,cutoff,n,deaths,low_n,high_n,excluded_n,logrank_p,cutoff_adjusted_p,candidate_cutoffs,hazard_ratio_high_vs_low,ci_lower,ci_upper,ph_test_p,cox_note,family_adjusted_p
-"group3","mean",7.28513811539998,113,47,69,44,31,0.947524599187766,0.947524599187766,1,1.01911836962457,0.568727765784432,1.8261852397407,0.942736314844311,"",1

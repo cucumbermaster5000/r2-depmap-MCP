@@ -1,12 +1,12 @@
 # Integrated medulloblastoma gene-report MCP
 
-The [Shiny Version 1 app](shiny/README.md) provides broad MB subgroup expression,
-statistics and CSV/PDF/PNG downloads without MCP or an AI model. Open the project
-in RStudio and run `shiny::runApp("shiny")`.
+This repository publishes the R-based Model Context Protocol (MCP) server. It
+exposes medulloblastoma R2, DepMap, PubMed, enrichment and clinical analysis
+tools over MCP's newline-delimited JSON-RPC stdio transport.
 
-The analysis core is reusable from R, Shiny or another GUI without MCP or an AI
-agent. See [the architecture and direct R API](docs/ARCHITECTURE.md). MCP and the
-command-line report script use the same core functions.
+The server entry point is `R/server.R`; it loads the shared analysis core and
+registers the tool implementations in `R/v1_tools.R`. The web app is not part
+of this published repository.
 
 The current report includes Cavalli subtypes, Pfister CNS expression, survival and metastasis with selectable cutoffs, Enrichr, archived public DepMap dependencies and PubMed. **Start with [the current report guide](docs/GENE_REPORT.md).** The initial Version 1 audit below is retained as historical context; its deferred scope has now been extended.
 

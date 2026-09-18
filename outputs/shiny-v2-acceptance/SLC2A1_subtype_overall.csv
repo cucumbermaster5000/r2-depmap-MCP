@@ -1,2 +1,0 @@
-test,statistic,df,p_value,adjusted_p_value,epsilon_squared,n,groups,reason,multiple_testing
-"Kruskal-Wallis rank sum test",159.509703501557,11,1.68595192131058e-28,NA,0.197749272305669,763,12,"Predefined rank-based comparison of independent tumour expression distributions; no normality-test-driven selection. Group sizes, spread, ties and missingness are inspected first. Unequal shapes/spreads preclude interpreting this solely as a median test.","One omnibus test per gene; no across-gene correction"

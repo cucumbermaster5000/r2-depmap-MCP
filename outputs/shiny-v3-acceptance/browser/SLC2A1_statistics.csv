@@ -1,2 +1,0 @@
-test,statistic,df,p_value,n,groups,excluded_n,epsilon_squared,multiple_testing
-"Kruskal-Wallis rank sum test",96.6767208479572,3,8.05271531415565e-21,763,4,0,0.123421239588876,"One predefined omnibus test for one gene; no pairwise tests or multiplicity adjustment in Version 1"

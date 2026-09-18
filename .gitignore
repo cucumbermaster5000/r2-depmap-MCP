@@ -4,3 +4,13 @@
 .RData
 data/
 output/
+outputs/
+shiny/
+
+# Web-app-only documentation and validation scripts are not part of the MCP publication.
+docs/SHINY_*.md
+scripts/check-shiny-*.R
+scripts/check-shiny-*.cjs
+scripts/serve-shiny.R
+scripts/version1.R
+tests/testthat/test-shiny.R

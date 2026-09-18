@@ -1,2 +1,0 @@
-cohort,cutoff_method,cutoff,n,excluded_n,odds_ratio_high_vs_low,ci_lower,ci_upper,p_value,interpretation,family_adjusted_p
-"all","median",9.04848687399234,573,190,1.30965657894859,0.903721168761263,1.90031766809614,0.147471410994526,"Fisher exact test; unadjusted for clinical confounding",0.664338623614002
