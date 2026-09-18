@@ -1,0 +1,91 @@
+{
+  "dataset_table": "ps_avgpres_pfisterb272_informp3",
+  "accession": null,
+  "dataset_label": "Mixed Pediatric Pan Cancer - Pfister - 272 - fpkm - informp3",
+  "queried_gene": "HLX",
+  "reporter": "HLX",
+  "transformation": "R2 transform_none (untransformed source expression)",
+  "sample_join": "Exact equality: expression table samplenames to annotation samplenames; no positional or GEO-expression-ID join",
+  "cache_hit": false,
+  "retrieved_at": "2026-09-18T09:58:24Z",
+  "output_dir": "C:/Users/dng/Documents/r2DepmapMCPtest/r2-depmap/outputs/pfister/HLX/20260918T095819-951833124a82",
+  "requests": [
+    {
+      "file": "landing.html",
+      "url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?table=ps_avgpres_pfisterb272_informp3",
+      "method": "GET",
+      "fields": null,
+      "retrieved_at": "2026-09-18T09:58:19Z",
+      "md5": "fb09c966281d0f5ba39711255452f04f"
+    },
+    {
+      "file": "guest.html",
+      "url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi",
+      "method": "POST",
+      "fields": {
+        "method": "guest",
+        "open_page": "auth"
+      },
+      "retrieved_at": "2026-09-18T09:58:20Z",
+      "md5": "1e0e6c34f163c44b8475fa1fd5329819"
+    },
+    {
+      "file": "dataset.html",
+      "url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?table=ps_avgpres_pfisterb272_informp3",
+      "method": "GET",
+      "fields": null,
+      "retrieved_at": "2026-09-18T09:58:20Z",
+      "md5": "15981fcf69fceaac1ada17c88fc5d184"
+    },
+    {
+      "file": "dataset.json",
+      "url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?json_option=json_dataset_info&table=ps_avgpres_pfisterb272_informp3",
+      "method": "GET",
+      "fields": null,
+      "retrieved_at": "2026-09-18T09:58:20Z",
+      "md5": "00dd8a1de78eecd0401ad68ade9e3886"
+    },
+    {
+      "file": "tracks.json",
+      "url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?json_option=json_dataset_info_tracks&table=ps_avgpres_pfisterb272_informp3",
+      "method": "GET",
+      "fields": null,
+      "retrieved_at": "2026-09-18T09:58:21Z",
+      "md5": "74ca456e234842b5fd9419f7bf55c108"
+    },
+    {
+      "file": "annotations.json",
+      "url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?json_option=json_cg_sampleannotation_v1&ctable=ps_avgpres_pfisterb272_informp3&subset=",
+      "method": "GET",
+      "fields": null,
+      "retrieved_at": "2026-09-18T09:58:22Z",
+      "md5": "66523517b6b7a75157abb283c4b2e755"
+    },
+    {
+      "file": "reporters.json",
+      "url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?json_option=json_find_reporter_in_dataset_v1&dataset=ps_avgpres_pfisterb272_informp3&search_by=gene_symbol&query=HLX",
+      "method": "GET",
+      "fields": null,
+      "retrieved_at": "2026-09-18T09:58:22Z",
+      "md5": "e8c4947fbfdd1628fe9083603d6760b9"
+    },
+    {
+      "file": "expression.html",
+      "url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi",
+      "method": "POST",
+      "fields": {
+        "table": "ps_avgpres_pfisterb272_informp3",
+        "option": "display2",
+        "analysis_type": "single_reporter",
+        "factor": "HLX",
+        "cortype": "transform_none",
+        "subset": "",
+        "grouping_track": "cancer_type",
+        "graphtype": "yy_i"
+      },
+      "retrieved_at": "2026-09-18T09:58:24Z",
+      "md5": "621ab01b8c6ccd750736dec92cfdd1c3"
+    }
+  ],
+  "limitations": "Unofficial read-only R2 interface; validated against observed responses. No clinical/subtype inference. All samples retained."
+}

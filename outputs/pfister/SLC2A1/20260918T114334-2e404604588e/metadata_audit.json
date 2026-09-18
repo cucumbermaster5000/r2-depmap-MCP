@@ -1,0 +1,332 @@
+{
+  "fields": [
+    {
+      "field": "link",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 272,
+      "unique_values": [
+        ""
+      ],
+      "value_counts": {
+        "1": 272
+      }
+    },
+    {
+      "field": "cancer_type",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": [
+        "atrt",
+        "epd_it",
+        "etmr",
+        "ews",
+        "hgg_k27m",
+        "hggother",
+        "mb_group3",
+        "mb_group4",
+        "mb_shh",
+        "mb_wnt",
+        "nb",
+        "os",
+        "pa",
+        "rms",
+        "t-all"
+      ],
+      "value_counts": {
+        "atrt": 11,
+        "epd_it": 2,
+        "etmr": 4,
+        "ews": 5,
+        "hgg_k27m": 11,
+        "hggother": 22,
+        "mb_group3": 37,
+        "mb_group4": 67,
+        "mb_shh": 25,
+        "mb_wnt": 12,
+        "nb": 1,
+        "os": 2,
+        "pa": 68,
+        "rms": 4,
+        "t-all": 1
+      }
+    },
+    {
+      "field": "subgroup",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": [
+        "alv",
+        "ews-like",
+        "ews-true",
+        "g34r",
+        "group3",
+        "group4",
+        "idh",
+        "k27m",
+        "myc",
+        "nd",
+        "nmyc-neg",
+        "pf",
+        "shh",
+        "t-all",
+        "tyr",
+        "wnt",
+        "wt"
+      ],
+      "value_counts": {
+        "alv": 4,
+        "ews-like": 1,
+        "ews-true": 4,
+        "g34r": 2,
+        "group3": 37,
+        "group4": 67,
+        "idh": 4,
+        "k27m": 11,
+        "myc": 2,
+        "nd": 75,
+        "nmyc-neg": 1,
+        "pf": 2,
+        "shh": 30,
+        "t-all": 1,
+        "tyr": 3,
+        "wnt": 12,
+        "wt": 16
+      }
+    },
+    {
+      "field": "age",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 1,
+      "unique_values": null,
+      "value_counts": null
+    },
+    {
+      "field": "entity",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": [
+        "atrt",
+        "epd_it",
+        "etmr",
+        "ews",
+        "hgg_k27m",
+        "hggother",
+        "mb_group3",
+        "mb_group4",
+        "mb_shh",
+        "mb_wnt",
+        "nb",
+        "os",
+        "pa",
+        "rms",
+        "t-all"
+      ],
+      "value_counts": {
+        "atrt": 11,
+        "epd_it": 2,
+        "etmr": 4,
+        "ews": 5,
+        "hgg_k27m": 11,
+        "hggother": 22,
+        "mb_group3": 37,
+        "mb_group4": 67,
+        "mb_shh": 25,
+        "mb_wnt": 12,
+        "nb": 1,
+        "os": 2,
+        "pa": 68,
+        "rms": 4,
+        "t-all": 1
+      }
+    },
+    {
+      "field": "relapse_sequenced",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": [
+        "relapse_of_icgc_gbm19",
+        "relapse_of_icgc_gbm53",
+        "x"
+      ],
+      "value_counts": {
+        "relapse_of_icgc_gbm19": 1,
+        "relapse_of_icgc_gbm53": 1,
+        "x": 270
+      }
+    },
+    {
+      "field": "samplenames",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": null,
+      "value_counts": null
+    },
+    {
+      "field": "seq_type",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": [
+        "wes",
+        "wgs"
+      ],
+      "value_counts": {
+        "wes": 23,
+        "wgs": 249
+      }
+    },
+    {
+      "field": "_data_set",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": [
+        "all"
+      ],
+      "value_counts": {
+        "all": 272
+      }
+    },
+    {
+      "field": "type",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": [
+        "primary",
+        "relapse"
+      ],
+      "value_counts": {
+        "primary": 247,
+        "relapse": 25
+      }
+    },
+    {
+      "field": "entity_sub",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 0,
+      "unique_values": [
+        "atrt_",
+        "atrt_myc",
+        "atrt_shh",
+        "atrt_tyr",
+        "epd_it_pf",
+        "etmr_",
+        "ews_ews-like",
+        "ews_ews-true",
+        "hgg_k27m_k27m",
+        "hggother_g34r",
+        "hggother_idh",
+        "hggother_wt",
+        "mb_group3_group3",
+        "mb_group4_group4",
+        "mb_shh_shh",
+        "mb_wnt_wnt",
+        "nb_nmyc-neg",
+        "os_",
+        "pa_",
+        "rms_alv",
+        "t-all_t-all"
+      ],
+      "value_counts": {
+        "atrt_": 1,
+        "atrt_myc": 2,
+        "atrt_shh": 5,
+        "atrt_tyr": 3,
+        "epd_it_pf": 2,
+        "etmr_": 4,
+        "ews_ews-like": 1,
+        "ews_ews-true": 4,
+        "hgg_k27m_k27m": 11,
+        "hggother_g34r": 2,
+        "hggother_idh": 4,
+        "hggother_wt": 16,
+        "mb_group3_group3": 37,
+        "mb_group4_group4": 67,
+        "mb_shh_shh": 25,
+        "mb_wnt_wnt": 12,
+        "nb_nmyc-neg": 1,
+        "os_": 2,
+        "pa_": 68,
+        "rms_alv": 4,
+        "t-all_t-all": 1
+      }
+    },
+    {
+      "field": "gender",
+      "source_type": "string",
+      "n": 272,
+      "missing_n": 2,
+      "unique_values": [
+        "female",
+        "male",
+        "na"
+      ],
+      "value_counts": {
+        "female": 124,
+        "male": 146,
+        "na": 2
+      }
+    }
+  ],
+  "dataset": {
+    "source": "author",
+    "sampleSize": "272",
+    "sourceDate": "2000-01-01",
+    "species": "hs",
+    "internalIdentifier": "ps_avgpres_pfisterb272_informp3",
+    "accession": null,
+    "datasetTitle": "Mixed Pediatric Pan Cancer - Pfister - 272 - fpkm - informp3",
+    "r2Date": "2017-07-03",
+    "platform": "informp3"
+  },
+  "track_descriptions": [
+    "_data_set: all",
+    "age: (#) 0 - 25",
+    "cancer_type: 15 entities",
+    "entity: 15 entities",
+    "entity_sub: 21 entities",
+    "gender: female, male, na",
+    "id: (#) 0 - 271",
+    "relapse_sequenced: relapse_of_icgc_gbm19, relapse_of_icgc_gbm53, x",
+    "samplenames: 272 entities",
+    "seq_type: wes, wgs",
+    "subgroup: 17 entities",
+    "type: primary, relapse"
+  ],
+  "subtype_by_subgroup": null,
+  "classification": {
+    "field": null,
+    "source_publication": null,
+    "note": "Original R2 labels and observed subgroup/subtype cross-tabulation. No classifier, relabelling, or alternative classification inferred."
+  },
+  "metastasis": {
+    "field": null,
+    "coding_verified": false,
+    "code_0": null,
+    "code_1": null,
+    "evidence": "Coding unresolved; labels not generated",
+    "missing_definition": "Source token na is retained in raw data and treated as missing only in derived fields"
+  },
+  "survival": {
+    "time_field": null,
+    "time_unit": null,
+    "status_field": null,
+    "event_coding_verified": false,
+    "note": "Observed dead codes are retained verbatim. An independent codebook for event semantics has not been retrieved; no survival model or event recoding is performed."
+  },
+  "identifier_note": null,
+  "missing_tokens": [
+    "",
+    "na",
+    "NA"
+  ]
+}

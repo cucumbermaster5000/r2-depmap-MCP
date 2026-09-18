@@ -1,0 +1,942 @@
+{
+  "controls": [
+    {
+      "tag": "input",
+      "name": "argument",
+      "type": "hidden",
+      "value": "",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "option",
+      "type": "hidden",
+      "value": "",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "histogram_back",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "mark_rotate",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "draw_legend",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "linear_fit",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_t1",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "table",
+      "type": "hidden",
+      "value": "ps_avgpres_gse85217geo763_hugene11t",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "xy_group_overlap_as",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "result_file",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "trackselection",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "datapoint_opacity",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "marksam",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_x",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "draw_height",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_legend",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "groups_order_by",
+      "type": "hidden",
+      "value": "groupname",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "circle_type",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "annottrack",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "box_opacity",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_y",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "box_width",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "group_gap_size",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "trackforsize",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "ts_linewidth_p",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "display_annotation",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "color_opt_yy_group_bg",
+      "type": "hidden",
+      "value": "by_track",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "kde_bins",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "colorgroupbox",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "draw_width",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "color_g1",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_legend_header",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "dotsize",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "annotcell",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "dot-stroke-width",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "rotate_y",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "orientation",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "default_color",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "mark_size",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "chainedsams",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "mark_color",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "dot_size_from_track",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "mark_type",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_tracks",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_inline",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "option",
+      "type": "hidden",
+      "value": "display2",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "box_stroke_width",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "gridlines",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "mark_radius",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "default_surface_color",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "rotate_x",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "title_format",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "zero_lines",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_tracks_header",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "ts_linewidth_s",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "axis_width",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "graph_extra",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_tsub",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_ruler",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "k_value",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "fontsize_footnote",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "default_dot_color",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "color_g2",
+      "type": "hidden",
+      "value": null,
+      "options": []
+    },
+    {
+      "tag": "select",
+      "name": "analysis_type",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "single_reporter",
+          "label": "single gene"
+        },
+        {
+          "value": "reporter_vs_reporter",
+          "label": "gene vs gene"
+        },
+        {
+          "value": "reporter_vs_track",
+          "label": "gene vs track"
+        },
+        {
+          "value": "track_vs_track",
+          "label": "track vs track"
+        }
+      ]
+    },
+    {
+      "tag": "input",
+      "name": null,
+      "type": null,
+      "value": "",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": "factor",
+      "type": null,
+      "value": "",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": null,
+      "type": "button",
+      "value": "advanced",
+      "options": []
+    },
+    {
+      "tag": "select",
+      "name": "cortype",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "transform_none",
+          "label": "None"
+        },
+        {
+          "value": "transform_log2",
+          "label": "Log2"
+        },
+        {
+          "value": "transform_zscore",
+          "label": "Z-score"
+        },
+        {
+          "value": "transform_log2_zscore",
+          "label": "Log2 z-score"
+        },
+        {
+          "value": "transform_mad",
+          "label": "MAD"
+        },
+        {
+          "value": "transform_log2_mad",
+          "label": "Log2 MAD"
+        },
+        {
+          "value": "transform_center",
+          "label": "Center"
+        },
+        {
+          "value": "transform_log2_center",
+          "label": "Log2 center"
+        },
+        {
+          "value": "transform_rank",
+          "label": "Rank"
+        },
+        {
+          "value": "transform_sqrt",
+          "label": "Square root"
+        },
+        {
+          "value": "transform_log2_groups_zscore",
+          "label": "Log2 grouped z-score"
+        }
+      ]
+    },
+    {
+      "tag": "select",
+      "name": "transform_groups_track",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "",
+          "label": ""
+        },
+        {
+          "value": "_data_set",
+          "label": "data set (1 cat)"
+        },
+        {
+          "value": "age",
+          "label": "age (#)"
+        },
+        {
+          "value": "agegroup",
+          "label": "agegroup (5 cat)"
+        },
+        {
+          "value": "dead",
+          "label": "dead (3 cat)"
+        },
+        {
+          "value": "gender",
+          "label": "gender (3 cat)"
+        },
+        {
+          "value": "geo-gse85217",
+          "label": "geo-gse85217 (763 cat)"
+        },
+        {
+          "value": "histology",
+          "label": "histology (5 cat)"
+        },
+        {
+          "value": "lab-id",
+          "label": "lab-id (763 cat)"
+        },
+        {
+          "value": "met_status_(1_met__0_m0)",
+          "label": "met_status_(1_met__0_m0) (3 cat)"
+        },
+        {
+          "value": "os_(years)",
+          "label": "os_(years) (#)"
+        },
+        {
+          "value": "samplenames",
+          "label": "samplenames (763 cat)"
+        },
+        {
+          "value": "subgroup",
+          "label": "subgroup (4 cat)"
+        },
+        {
+          "value": "subtype",
+          "label": "subtype (12 cat)"
+        },
+        {
+          "value": "tissue",
+          "label": "tissue (1 cat)"
+        },
+        {
+          "value": "type",
+          "label": "type (1 cat)"
+        }
+      ]
+    },
+    {
+      "tag": "select",
+      "name": "subsettracksubset",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "",
+          "label": ""
+        },
+        {
+          "value": "_data_set",
+          "label": "data set (1 cat)"
+        },
+        {
+          "value": "age",
+          "label": "age (#)"
+        },
+        {
+          "value": "agegroup",
+          "label": "agegroup (5 cat)"
+        },
+        {
+          "value": "dead",
+          "label": "dead (3 cat)"
+        },
+        {
+          "value": "gender",
+          "label": "gender (3 cat)"
+        },
+        {
+          "value": "geo-gse85217",
+          "label": "geo-gse85217 (763 cat)"
+        },
+        {
+          "value": "histology",
+          "label": "histology (5 cat)"
+        },
+        {
+          "value": "lab-id",
+          "label": "lab-id (763 cat)"
+        },
+        {
+          "value": "met_status_(1_met__0_m0)",
+          "label": "met_status_(1_met__0_m0) (3 cat)"
+        },
+        {
+          "value": "os_(years)",
+          "label": "os_(years) (#)"
+        },
+        {
+          "value": "samplenames",
+          "label": "samplenames (763 cat)"
+        },
+        {
+          "value": "subgroup",
+          "label": "subgroup (4 cat)"
+        },
+        {
+          "value": "subtype",
+          "label": "subtype (12 cat)"
+        },
+        {
+          "value": "tissue",
+          "label": "tissue (1 cat)"
+        },
+        {
+          "value": "type",
+          "label": "type (1 cat)"
+        }
+      ]
+    },
+    {
+      "tag": "input",
+      "name": "subset",
+      "type": "hidden",
+      "value": "",
+      "options": []
+    },
+    {
+      "tag": "select",
+      "name": "graphtype",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "yy_i",
+          "label": "YY plot with annotation"
+        },
+        {
+          "value": "xy_i",
+          "label": "XY plot"
+        },
+        {
+          "value": "histogram_i",
+          "label": "Histogram"
+        },
+        {
+          "value": "density_i",
+          "label": "Density"
+        }
+      ]
+    },
+    {
+      "tag": "select",
+      "name": "grouping_track",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "",
+          "label": ""
+        },
+        {
+          "value": "_data_set",
+          "label": "data set (1 cat)"
+        },
+        {
+          "value": "agegroup",
+          "label": "agegroup (5 cat)"
+        },
+        {
+          "value": "dead",
+          "label": "dead (3 cat)"
+        },
+        {
+          "value": "gender",
+          "label": "gender (3 cat)"
+        },
+        {
+          "value": "geo-gse85217",
+          "label": "geo-gse85217 (763 cat)"
+        },
+        {
+          "value": "histology",
+          "label": "histology (5 cat)"
+        },
+        {
+          "value": "lab-id",
+          "label": "lab-id (763 cat)"
+        },
+        {
+          "value": "met_status_(1_met__0_m0)",
+          "label": "met_status_(1_met__0_m0) (3 cat)"
+        },
+        {
+          "value": "samplenames",
+          "label": "samplenames (763 cat)"
+        },
+        {
+          "value": "subgroup",
+          "label": "subgroup (4 cat)"
+        },
+        {
+          "value": "subtype",
+          "label": "subtype (12 cat)"
+        },
+        {
+          "value": "tissue",
+          "label": "tissue (1 cat)"
+        },
+        {
+          "value": "type",
+          "label": "type (1 cat)"
+        }
+      ]
+    },
+    {
+      "tag": "select",
+      "name": "add_data_scatter",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "false",
+          "label": "false"
+        },
+        {
+          "value": "true",
+          "label": "true"
+        }
+      ]
+    },
+    {
+      "tag": "select",
+      "name": "color_mode_groups",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "",
+          "label": "Default Color"
+        },
+        {
+          "value": "colorbytrack",
+          "label": "Color by Track"
+        }
+      ]
+    },
+    {
+      "tag": "select",
+      "name": "colormode",
+      "type": null,
+      "value": null,
+      "options": [
+        {
+          "value": "",
+          "label": "Default Color"
+        },
+        {
+          "value": "colorbytrack",
+          "label": "Color by a Track"
+        },
+        {
+          "value": "colorbygene",
+          "label": "Color by a Gene"
+        }
+      ]
+    },
+    {
+      "tag": "input",
+      "name": null,
+      "type": "submit",
+      "value": "Submit",
+      "options": []
+    }
+  ],
+  "links": [
+    {
+      "label": "R2 Main",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi"
+    },
+    {
+      "label": "Online Tutorial",
+      "href": "http://r2-tutorials.readthedocs.io/en/latest/"
+    },
+    {
+      "label": "Main",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi"
+    },
+    {
+      "label": "Time series",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?option=timeseries1"
+    },
+    {
+      "label": "Survival (Kaplan-Meier/Cox)",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?option=kaplan_main"
+    },
+    {
+      "label": "Sample maps (UMAP/tSNE)",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?option=map_list"
+    },
+    {
+      "label": "Sample maps 3d",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?option=map_3d_list"
+    },
+    {
+      "label": "Small Tools",
+      "href": "#"
+    },
+    {
+      "label": "DataGrabber",
+      "href": "#"
+    },
+    {
+      "label": "Genome Browser",
+      "href": "#"
+    },
+    {
+      "label": "ChIP data",
+      "href": "#"
+    },
+    {
+      "label": "WGS/WES data",
+      "href": "#"
+    },
+    {
+      "label": "TAR literature",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?option=imi2_targetmap_v1"
+    },
+    {
+      "label": "Change Data Scope",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?option=dscope_index"
+    },
+    {
+      "label": "Login/Register",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?open_page=login"
+    },
+    {
+      "label": "Help",
+      "href": "#"
+    },
+    {
+      "label": "Online Documentation (RTD)",
+      "href": "http://r2-tutorials.readthedocs.io/en/latest/"
+    },
+    {
+      "label": "Tutorials Book (PDF)",
+      "href": "http://hgserver1.amc.nl/r2/help/r2_tutorials.pdf"
+    },
+    {
+      "label": "Training Courses",
+      "href": "https://r2-training-courses.readthedocs.io/en/latest/"
+    },
+    {
+      "label": "Contact / About R2",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?option=about_contact"
+    },
+    {
+      "label": "",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?option=about_r2_cv"
+    },
+    {
+      "label": "",
+      "href": "https://www.youtube.com/channel/UCmg2pijLebGd_nA1RMhhbGg"
+    },
+    {
+      "label": "",
+      "href": "https://r2-tutorials.readthedocs.io/_/downloads/en/latest/pdf/"
+    },
+    {
+      "label": "R2 Main",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi"
+    },
+    {
+      "label": "(Login)",
+      "href": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?open_page=login"
+    }
+  ]
+}

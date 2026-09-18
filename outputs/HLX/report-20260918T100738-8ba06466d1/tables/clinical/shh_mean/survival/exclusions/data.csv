@@ -1,0 +1,52 @@
+queried_gene,reporter,sample_id,expression,expression_source_value,subgroup,subtype,metastasis_raw,metastasis_label,survival_time_source_value,survival_time_years,survival_status_raw,survival_event,event,time
+"HLX","7909890","GSM2260754",5.44294349584873,"5.44294349584873","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260756",5.37155886261196,"5.37155886261196","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260757",6.58496250072116,"6.58496250072116","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260775",5.19770815795585,"5.19770815795585","shh","shh_beta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260776",5.41953889151378,"5.41953889151378","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260777",5.40258575823259,"5.40258575823259","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260778",5.38887833881199,"5.38887833881199","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260804",5.41616416473313,"5.41616416473313","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260805",5.37155886261196,"5.37155886261196","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260807",5.33985000288462,"5.33985000288462","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260809",5.80477637795583,"5.80477637795583","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260810",5.7839804136838,"5.7839804136838","shh","shh_beta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260826",5.78920757534735,"5.78920757534735","shh","shh_delta","1","Metastatic","na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260827",5.54843662469604,"5.54843662469604","shh","shh_delta","1","Metastatic","na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260829",5.50143914515887,"5.50143914515887","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260841",5.5077946401987,"5.5077946401987","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260942",5.66391384211598,"5.66391384211598","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2260946",6.22110372536788,"6.22110372536788","shh","shh_delta","1","Metastatic","10",10,"na",NA,NA,NA
+"HLX","7909890","GSM2260969",5.4594316186373,"5.4594316186373","shh","shh_alpha","1","Metastatic","na",NA,"1",NA,NA,NA
+"HLX","7909890","GSM2260982",5.49505552836802,"5.49505552836802","shh","shh_beta","0","M0 (no metastasis)","11",11,"na",NA,NA,NA
+"HLX","7909890","GSM2261035",6.58044701959866,"6.58044701959866","shh","shh_delta","0","M0 (no metastasis)","5",5,"na",NA,NA,NA
+"HLX","7909890","GSM2261051",5.59693514238723,"5.59693514238723","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261067",5.34695688937888,"5.34695688937888","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261084",5.5909612413426,"5.5909612413426","shh","shh_delta","0","M0 (no metastasis)","na",NA,"0",NA,NA,NA
+"HLX","7909890","GSM2261101",5.64961545906341,"5.64961545906341","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261177",6.05311133645956,"6.05311133645956","shh","shh_beta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261178",6.0639343057541,"6.0639343057541","shh","shh_delta","0","M0 (no metastasis)","na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261189",5.80477637795583,"5.80477637795583","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261199",5.84297883178833,"5.84297883178833","shh","shh_delta","0","M0 (no metastasis)","na",NA,"0",NA,NA,NA
+"HLX","7909890","GSM2261202",6.22881869049588,"6.22881869049588","shh","shh_delta","0","M0 (no metastasis)","na",NA,"0",NA,NA,NA
+"HLX","7909890","GSM2261203",6.08958289312471,"6.08958289312471","shh","shh_delta","0","M0 (no metastasis)","na",NA,"0",NA,NA,NA
+"HLX","7909890","GSM2261204",5.55458885167764,"5.55458885167764","shh","shh_delta","0","M0 (no metastasis)","0.2",0.2,"na",NA,NA,NA
+"HLX","7909890","GSM2261249",6.02014657311178,"6.02014657311178","shh","shh_beta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261251",6.01346225980656,"6.01346225980656","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261256",5.70321146739115,"5.70321146739115","shh","shh_beta","0","M0 (no metastasis)","na",NA,"0",NA,NA,NA
+"HLX","7909890","GSM2261260",5.91408609701272,"5.91408609701272","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261279",6.18784690943957,"6.18784690943957","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261287",5.35402893805439,"5.35402893805439","shh","shh_beta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261336",5.75755668893945,"5.75755668893945","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261392",5.65535182861255,"5.65535182861255","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261396",5.60880924267552,"5.60880924267552","shh","shh_gamma","0","M0 (no metastasis)","na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261400",6.14567745519564,"6.14567745519564","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261412",5.84549005094438,"5.84549005094438","shh","shh_alpha","na",NA,"na",NA,"0",NA,NA,NA
+"HLX","7909890","GSM2261427",6.03342300153745,"6.03342300153745","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261428",5.16992500144231,"5.16992500144231","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261430",5.25927248703759,"5.25927248703759","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261434",5.57288966842058,"5.57288966842058","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261441",5.49825086752783,"5.49825086752783","shh","shh_alpha","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261442",5.46923479366766,"5.46923479366766","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261471",5.79181407116183,"5.79181407116183","shh","shh_gamma","na",NA,"na",NA,"na",NA,NA,NA
+"HLX","7909890","GSM2261472",5.88264304936184,"5.88264304936184","shh","shh_delta","na",NA,"na",NA,"na",NA,NA,NA

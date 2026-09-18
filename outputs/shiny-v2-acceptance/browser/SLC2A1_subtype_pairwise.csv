@@ -1,0 +1,67 @@
+subtype_a,subtype_b,n_a,n_b,test,statistic,df,median_difference,rank_biserial,direction,p_value,adjusted_p_value
+"wnt_alpha","wnt_beta",49,21,"Wilcoxon rank sum exact test",528,NA,0.0190527425978093,0.0262390670553936,"A higher rank tendency",0.868732873660836,0.910101105739924
+"wnt_alpha","shh_alpha",49,65,"Wilcoxon rank sum test with continuity correction",1846,NA,0.246141024109049,0.159183673469388,"A higher rank tendency",0.147580738766569,0.202923515804032
+"wnt_alpha","shh_beta",49,35,"Wilcoxon rank sum exact test",1127,NA,0.294586246074589,0.314285714285714,"A higher rank tendency",0.0141017587776427,0.0273740023330711
+"wnt_alpha","shh_gamma",49,47,"Wilcoxon rank sum test with continuity correction",896,NA,-0.235968154162661,-0.221884498480243,"A lower rank tendency",0.0616287188230593,0.0945929172633003
+"wnt_alpha","shh_delta",49,76,"Wilcoxon rank sum test with continuity correction",2676,NA,0.473771436028059,0.437164339419978,"A higher rank tendency",3.88939380151498e-05,0.000150999994647052
+"wnt_alpha","group3_alpha",49,67,"Wilcoxon rank sum test with continuity correction",665,NA,-0.42059985565219,-0.594882729211087,"A lower rank tendency",4.89129448639631e-08,3.22825436102157e-07
+"wnt_alpha","group3_beta",49,37,"Wilcoxon rank sum test with continuity correction",578,NA,-0.28925805303855,-0.36238279095422,"A lower rank tendency",0.00422393676347142,0.00929266087963713
+"wnt_alpha","group3_gamma",49,40,"Wilcoxon rank sum exact test",867,NA,-0.048864761117791,-0.11530612244898,"A lower rank tendency",0.355249588535909,0.434193941543889
+"wnt_alpha","group4_alpha",49,98,"Wilcoxon rank sum test with continuity correction",2372,NA,0.0800457425925885,-0.0120783007080383,"A lower rank tendency",0.906772627449562,0.933636353658341
+"wnt_alpha","group4_beta",49,109,"Wilcoxon rank sum test with continuity correction",2602.5,NA,0.114636240980559,-0.0254633963677214,"A lower rank tendency",0.799697964258086,0.851291381306995
+"wnt_alpha","group4_gamma",49,119,"Wilcoxon rank sum test with continuity correction",2333,NA,-0.116706171551821,-0.199794203395644,"A lower rank tendency",0.042259781252557,0.0664082276825896
+"wnt_beta","shh_alpha",21,65,"Wilcoxon rank sum test with continuity correction",769,NA,0.227088281511239,0.126739926739927,"A higher rank tendency",0.387315330141638,0.464778396169965
+"wnt_beta","shh_beta",21,35,"Wilcoxon rank sum exact test",469,NA,0.27553350347678,0.276190476190476,"A higher rank tendency",0.0874616484567612,0.12827708440325
+"wnt_beta","shh_gamma",21,47,"Wilcoxon rank sum test with continuity correction",372,NA,-0.25502089676047,-0.246200607902736,"A lower rank tendency",0.108232089859021,0.151985487887136
+"wnt_beta","shh_delta",21,76,"Wilcoxon rank sum test with continuity correction",1076,NA,0.45471869343025,0.348370927318296,"A higher rank tendency",0.0150713698090801,0.0284202973542653
+"wnt_beta","group3_alpha",21,67,"Wilcoxon rank sum test with continuity correction",330.5,NA,-0.439652598249999,-0.530206112295665,"A lower rank tendency",0.000265831769683675,0.000825899291644433
+"wnt_beta","group3_beta",21,37,"Wilcoxon rank sum test with continuity correction",249,NA,-0.308310795636359,-0.359073359073359,"A lower rank tendency",0.0245170653319428,0.042582271366006
+"wnt_beta","group3_gamma",21,40,"Wilcoxon rank sum exact test",364,NA,-0.0679175037156004,-0.133333333333333,"A lower rank tendency",0.402620808829711,0.474517381835017
+"wnt_beta","group4_alpha",21,98,"Wilcoxon rank sum test with continuity correction",1014,NA,0.0609929999947791,-0.0145772594752187,"A lower rank tendency",0.919490348299881,0.933636353658341
+"wnt_beta","group4_beta",21,109,"Wilcoxon rank sum test with continuity correction",1134,NA,0.0955834983827497,-0.00917431192660545,"A lower rank tendency",0.94955913195408,0.94955913195408
+"wnt_beta","group4_gamma",21,119,"Wilcoxon rank sum test with continuity correction",1011,NA,-0.13575891414963,-0.190876350540216,"A lower rank tendency",0.164858426417401,0.222054207011193
+"shh_alpha","shh_beta",65,35,"Wilcoxon rank sum test with continuity correction",1282,NA,0.0484452219655402,0.127032967032967,"A higher rank tendency",0.298041310552943,0.385700519539103
+"shh_alpha","shh_gamma",65,47,"Wilcoxon rank sum test with continuity correction",1028,NA,-0.48210917827171,-0.327004909983633,"A lower rank tendency",0.00326067123183679,0.00768586790361529
+"shh_alpha","shh_delta",65,76,"Wilcoxon rank sum test with continuity correction",3138.5,NA,0.22763041191901,0.270647773279352,"A higher rank tendency",0.00572961925148996,0.011817339706198
+"shh_alpha","group3_alpha",65,67,"Wilcoxon rank sum test with continuity correction",701,NA,-0.666740879761239,-0.678071182548795,"A lower rank tendency",1.83902004101025e-11,2.42750645413353e-10
+"shh_alpha","group3_beta",65,37,"Wilcoxon rank sum test with continuity correction",619,NA,-0.535399077147599,-0.485239085239085,"A lower rank tendency",4.95498137990619e-05,0.00018168265059656
+"shh_alpha","group3_gamma",65,40,"Wilcoxon rank sum test with continuity correction",944,NA,-0.29500578522684,-0.273846153846154,"A lower rank tendency",0.0189863915107365,0.0347941967043815
+"shh_alpha","group4_alpha",65,98,"Wilcoxon rank sum test with continuity correction",2553.5,NA,-0.16609528151646,-0.198273155416013,"A lower rank tendency",0.0324682043799449,0.0536597271446566
+"shh_alpha","group4_beta",65,109,"Wilcoxon rank sum test with continuity correction",2669.5,NA,-0.13150478312849,-0.246436132674665,"A lower rank tendency",0.00664040768185594,0.0132808153637119
+"shh_alpha","group4_gamma",65,119,"Wilcoxon rank sum test with continuity correction",2416,NA,-0.362847195660869,-0.375307045895281,"A lower rank tendency",2.64716462701445e-05,0.000109195540864346
+"shh_beta","shh_gamma",35,47,"Wilcoxon rank sum test with continuity correction",434,NA,-0.53055440023725,-0.472340425531915,"A lower rank tendency",0.000275299763881478,0.000825899291644433
+"shh_beta","shh_delta",35,76,"Wilcoxon rank sum test with continuity correction",1508.5,NA,0.17918518995347,0.13421052631579,"A higher rank tendency",0.258604170716101,0.341357505345253
+"shh_beta","group3_alpha",35,67,"Wilcoxon rank sum test with continuity correction",226,NA,-0.715186101726779,-0.80724946695096,"A lower rank tendency",2.59417697051175e-11,2.85359466756292e-10
+"shh_beta","group3_beta",35,37,"Wilcoxon rank sum test with continuity correction",224.5,NA,-0.583844299113139,-0.653281853281853,"A lower rank tendency",1.93371754172372e-06,9.11609698241184e-06
+"shh_beta","group3_gamma",35,40,"Wilcoxon rank sum test with continuity correction",408.5,NA,-0.34345100719238,-0.416428571428571,"A lower rank tendency",0.00199881393242401,0.00507391228999942
+"shh_beta","group4_alpha",35,98,"Wilcoxon rank sum test with continuity correction",1128,NA,-0.214540503482001,-0.342274052478134,"A lower rank tendency",0.00272814032663378,0.00666878746510478
+"shh_beta","group4_beta",35,109,"Wilcoxon rank sum test with continuity correction",1180,NA,-0.17995000509403,-0.381389252948886,"A lower rank tendency",0.000709056677237976,0.00194990586240443
+"shh_beta","group4_gamma",35,119,"Wilcoxon rank sum test with continuity correction",977,NA,-0.411292417626409,-0.530852340936375,"A lower rank tendency",1.89704673189049e-06,9.11609698241184e-06
+"shh_gamma","shh_delta",47,76,"Wilcoxon rank sum test with continuity correction",2778,NA,0.70973959019072,0.555431131019037,"A higher rank tendency",2.45889820504885e-07,1.47533892302931e-06
+"shh_gamma","group3_alpha",47,67,"Wilcoxon rank sum test with continuity correction",1009.5,NA,-0.184631701489529,-0.358844077484916,"A lower rank tendency",0.00115594282184975,0.00305168904968335
+"shh_gamma","group3_beta",47,37,"Wilcoxon rank sum test with continuity correction",759,NA,-0.0532898988758888,-0.127084531339851,"A lower rank tendency",0.321624524065051,0.408215742082564
+"shh_gamma","group3_gamma",47,40,"Wilcoxon rank sum test with continuity correction",1014,NA,0.18710339304487,0.0787234042553191,"A higher rank tendency",0.531328794745922,0.594367804292049
+"shh_gamma","group4_alpha",47,98,"Wilcoxon rank sum test with continuity correction",2805,NA,0.31601389675525,0.217976552323057,"A higher rank tendency",0.0341344041375771,0.0549480651970753
+"shh_gamma","group4_beta",47,109,"Wilcoxon rank sum test with continuity correction",3115.5,NA,0.35060439514322,0.216279523716572,"A higher rank tendency",0.0325210467543373,0.0536597271446566
+"shh_gamma","group4_gamma",47,119,"Wilcoxon rank sum test with continuity correction",2952,NA,0.119261982610841,0.055605220811729,"A higher rank tendency",0.578501569632525,0.636351726595778
+"shh_delta","group3_alpha",76,67,"Wilcoxon rank sum test with continuity correction",280,NA,-0.894371291680249,-0.890023566378633,"A lower rank tendency",4.95782314757271e-20,3.27216327739799e-18
+"shh_delta","group3_beta",76,37,"Wilcoxon rank sum test with continuity correction",391,NA,-0.763029489066609,-0.721906116642959,"A lower rank tendency",5.39970162205597e-10,4.45475383819617e-09
+"shh_delta","group3_gamma",76,40,"Wilcoxon rank sum test with continuity correction",708,NA,-0.52263619714585,-0.53421052631579,"A lower rank tendency",2.43421011361756e-06,1.07105244999172e-05
+"shh_delta","group4_alpha",76,98,"Wilcoxon rank sum test with continuity correction",1867,NA,-0.393725693435471,-0.498657357679914,"A lower rank tendency",1.76995470802328e-08,1.29796678588374e-07
+"shh_delta","group4_beta",76,109,"Wilcoxon rank sum test with continuity correction",1724.5,NA,-0.3591351950475,-0.583655239014969,"A lower rank tendency",1.52872911412319e-11,2.42750645413353e-10
+"shh_delta","group4_gamma",76,119,"Wilcoxon rank sum test with continuity correction",1543.5,NA,-0.59047760757988,-0.658668730650155,"A lower rank tendency",9.31118747942637e-15,3.0726918682107e-13
+"group3_alpha","group3_beta",67,37,"Wilcoxon rank sum test with continuity correction",1584,NA,0.13134180261364,0.27793465106898,"A higher rank tendency",0.0195058375463957,0.0347941967043815
+"group3_alpha","group3_gamma",67,40,"Wilcoxon rank sum test with continuity correction",1922,NA,0.371735094534399,0.434328358208955,"A higher rank tendency",0.000180943642493547,0.000597114020228706
+"group3_alpha","group4_alpha",67,98,"Wilcoxon rank sum test with continuity correction",5279,NA,0.500645598244779,0.60798050563509,"A higher rank tendency",3.56230600573326e-11,3.3587456625485e-10
+"group3_alpha","group4_beta",67,109,"Wilcoxon rank sum test with continuity correction",5944.5,NA,0.535236096632749,0.627961111871834,"A higher rank tendency",2.84972045960785e-12,6.26938501113727e-11
+"group3_alpha","group4_gamma",67,119,"Wilcoxon rank sum test with continuity correction",5774,NA,0.30389368410037,0.4483883105481,"A higher rank tendency",3.98393409595244e-07,2.19116375277384e-06
+"group3_beta","group3_gamma",37,40,"Wilcoxon rank sum test with continuity correction",902,NA,0.240393291920759,0.218918918918919,"A higher rank tendency",0.0996404979436365,0.142962453571305
+"group3_beta","group4_alpha",37,98,"Wilcoxon rank sum test with continuity correction",2530.5,NA,0.369303795631138,0.395752895752896,"A higher rank tendency",0.000404781000676868,0.00116154548020319
+"group3_beta","group4_beta",37,109,"Wilcoxon rank sum test with continuity correction",2870,NA,0.403894294019109,0.423258120505827,"A higher rank tendency",0.000124208730808872,0.000431461907020294
+"group3_beta","group4_gamma",37,119,"Wilcoxon rank sum test with continuity correction",2626,NA,0.172551881486729,0.192823075176016,"A higher rank tendency",0.0772985717797494,0.115947857669624
+"group3_gamma","group4_alpha",40,98,"Wilcoxon rank sum test with continuity correction",2163,NA,0.128910503710379,0.103571428571429,"A higher rank tendency",0.341953748616951,0.42582919639092
+"group3_gamma","group4_beta",40,109,"Wilcoxon rank sum test with continuity correction",2350.5,NA,0.16350100209835,0.078211009174312,"A higher rank tendency",0.466490766115174,0.540147202870201
+"group3_gamma","group4_gamma",40,119,"Wilcoxon rank sum test with continuity correction",2218,NA,-0.0678414104340295,-0.0680672268907563,"A lower rank tendency",0.521482117841352,0.59341068581947
+"group4_alpha","group4_beta",98,109,"Wilcoxon rank sum test with continuity correction",5190,NA,0.0345904983879706,-0.0282718592023966,"A lower rank tendency",0.726519230291169,0.786069986872412
+"group4_alpha","group4_gamma",98,119,"Wilcoxon rank sum test with continuity correction",4554.5,NA,-0.196751914144409,-0.218916137883725,"A lower rank tendency",0.00556759652139662,0.011817339706198
+"group4_beta","group4_gamma",109,119,"Wilcoxon rank sum test with continuity correction",5060.5,NA,-0.23134241253238,-0.219720915889292,"A lower rank tendency",0.00419409747615484,0.00929266087963713

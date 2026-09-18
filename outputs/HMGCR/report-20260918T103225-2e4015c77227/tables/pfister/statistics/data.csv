@@ -1,0 +1,2 @@
+test,n,excluded_n,groups,statistic,p_value,epsilon_squared
+"Kruskal-Wallis",246,0,9,122.710172892547,9.13329461707688e-23,0.484009168322982

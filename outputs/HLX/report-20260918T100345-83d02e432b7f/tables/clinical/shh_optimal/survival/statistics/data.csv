@@ -1,0 +1,2 @@
+cohort,cutoff_method,cutoff,n,deaths,low_n,high_n,excluded_n,logrank_p,cutoff_adjusted_p,candidate_cutoffs,hazard_ratio_high_vs_low,ci_lower,ci_upper,ph_test_p,cox_note,family_adjusted_p
+"shh","optimal",5.456149034648,172,38,28,144,51,0.0596618653448471,1,101,0.494510666575657,0.233325747117279,1.04806607234042,0.389331776612834,"",1

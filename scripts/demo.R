@@ -1,0 +1,17 @@
+#!/usr/bin/env Rscript
+file_arg <- sub("^--file=", "", commandArgs()[grepl("^--file=", commandArgs())])
+root <- normalizePath(file.path(dirname(file_arg[1]), ".."), winslash = "/")
+.libPaths(c(file.path(root, ".R-library"), .libPaths()))
+for (f in c("common", "cache", "r2_client", "depmap", "ranking", "study", "clinical", "enrichment", "integration", "tools", "study_tools")) source(file.path(root, "R", paste0(f, ".R")))
+cfg <- read_server_config(file.path(root, "config", "defaults.json"))
+analysis <- import_de_results(cfg, file.path(root, "examples", "medulloblastoma-de.csv"), "medulloblastoma", "group3", label = "SYNTHETIC medulloblastoma demo")
+ranking <- prioritize_candidates(cfg, analysis$id, model_csv = file.path(root, "tests", "fixtures", "Model.csv"),
+  gene_effect_csv = file.path(root, "tests", "fixtures", "CRISPRGeneEffect.csv"), depmap_release = "SYNTHETIC fixture")
+pathways <- enrich_pathways(cfg, analysis$id, gmt_path = file.path(root, "examples", "demo-pathways.gmt"), min_set_size = 1, fdr = 1)
+out <- file.path(root, "output", "demo")
+dir.create(out, recursive = TRUE, showWarnings = FALSE)
+writeLines(json_text(list(warning = "Synthetic software demo; not biological findings", analysis = analysis, ranking = ranking, pathways = pathways)), file.path(out, "report.json"))
+data.table::fwrite(ranking$candidates, file.path(out, "candidates.tsv"), sep = "\t")
+for (direction in c("up", "down")) data.table::fwrite(pathways$results[[paste0("demo-pathways.gmt:", direction)]]$rows, file.path(out, paste0("pathways-", direction, ".tsv")), sep = "\t")
+writeLines(capture.output(sessionInfo()), file.path(out, "session-info.txt"))
+cat("Synthetic demo complete. Analysis: ", analysis$id, "\nOutputs: ", out, "\n", sep = "")

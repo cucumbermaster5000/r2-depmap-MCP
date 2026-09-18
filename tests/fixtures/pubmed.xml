@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PubmedArticleSet>
+<PubmedArticle><MedlineCitation><PMID>123456</PMID><Article>
+<Journal><JournalIssue><PubDate><Year>2026</Year><Month>Sep</Month></PubDate></JournalIssue><Title>Test &amp; Science</Title></Journal>
+<ArticleTitle>HLX in &lt;script&gt;test&lt;/script&gt; tumours</ArticleTitle>
+<Abstract><AbstractText Label="BACKGROUND">Tumours vary between patients.</AbstractText><AbstractText Label="CONCLUSIONS">HLX expression was associated with the experimental phenotype. Further validation is needed.</AbstractText></Abstract>
+<ArticleDate DateType="Electronic"><Year>2026</Year><Month>08</Month><Day>02</Day></ArticleDate>
+<PublicationTypeList><PublicationType>Journal Article</PublicationType></PublicationTypeList>
+</Article><CommentsCorrectionsList><CommentsCorrections RefType="RetractionIn"><PMID>789</PMID></CommentsCorrections></CommentsCorrectionsList></MedlineCitation>
+<PubmedData><ArticleIdList><ArticleId IdType="doi">10.1234/example</ArticleId></ArticleIdList></PubmedData></PubmedArticle>
+<PubmedArticle><MedlineCitation><PMID>123457</PMID><Article>
+<Journal><JournalIssue><PubDate><MedlineDate>2025 Winter</MedlineDate></PubDate></JournalIssue><Title>Another Journal</Title></Journal>
+<ArticleTitle>A study without an abstract.</ArticleTitle>
+</Article></MedlineCitation></PubmedArticle>
+</PubmedArticleSet>

@@ -1,0 +1,68 @@
+{
+  "controls": [
+    {
+      "name": "method",
+      "value": "password",
+      "options": []
+    },
+    {
+      "name": "open_page",
+      "value": "auth",
+      "options": []
+    },
+    {
+      "name": "username",
+      "value": null,
+      "options": []
+    },
+    {
+      "name": "password",
+      "value": null,
+      "options": []
+    },
+    {
+      "name": null,
+      "value": "Sign in",
+      "options": []
+    },
+    {
+      "name": "open_page",
+      "value": "register_user",
+      "options": []
+    },
+    {
+      "name": "authentication_method",
+      "value": "password",
+      "options": []
+    },
+    {
+      "name": "method",
+      "value": "guest",
+      "options": []
+    },
+    {
+      "name": "open_page",
+      "value": "auth",
+      "options": []
+    },
+    {
+      "name": "open_page",
+      "value": "password_reset",
+      "options": []
+    },
+    {
+      "name": "username",
+      "value": null,
+      "options": []
+    },
+    {
+      "name": null,
+      "value": "Reset Password",
+      "options": []
+    }
+  ],
+  "scripts": [
+    "\n    {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"SoftwareApplication\",\n    \"name\": \"R2: Open Online Genomics Analysis and Visualization Platform\",\n    \"url\": \"https://r2platform.com\",\n    \"applicationCategory\": \"Scientific\",\n    \"operatingSystem\": \"Web browser\",\n    \"offers\": {\n        \"@type\": \"Offer\",\n        \"price\": \"0\",\n        \"priceCurrency\": \"USD\"\n    },\n    \"description\": \"Free online genomics analysis platform for biomedical researchers. Explore 3,000+ datasets and run omics analyses <U+2014> no coding required.\",\n    \"featureList\": \"RNAseq analysis, Kaplan-Meier survival analysis, TCGA data visualization, ChIP-seq, nocode bioinformatics, methylation analysis, copy number visualization, WGS\"\n    }\n    ",
+    ""
+  ]
+}

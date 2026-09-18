@@ -1,0 +1,228 @@
+{
+  "gene": "HLX",
+  "disease_filter": null,
+  "total_matches": 196,
+  "articles": [
+    {
+      "pmid": "42652246",
+      "title": "A TBX2-HLX Regulatory Axis Is Associated with Advanced Prostate Cancer.",
+      "journal": "Biomedicines",
+      "publication_date": "2026 Aug 20",
+      "electronic_date": "2026 08 20",
+      "doi": "10.3390/biomedicines14081865",
+      "doi_url": "https://doi.org/10.3390%2Fbiomedicines14081865",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42652246/",
+      "description": "Background: Homeobox transcription factors regulate developmental programs, cellular plasticity, and tumor progression, yet the role of H2.0-like homeobox (HLX) in prostate cancer (PCa) remains poorly defined.",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Background: Homeobox transcription factors regulate developmental programs, cellular plasticity, and tumor progression, yet the role of H2.0-like homeobox (HLX) in prostate cancer (PCa) remains poorly defined. We investigated the clinical significance of HLX and its relationship to the pro-metastatic transcription factor TBX2. Methods: Transcriptomic and clinical datasets from TCGA, MET500, and SU2C/PCF cohorts were analyzed to assess HLX expression, clinicopathologic associations, and its relationship with TBX2. Functional studies in human PCa cell lines included TBX2 gain- and loss-of-function, HLX knockdown, chromatin immunoprecipitation (ChIP), and expression analyses. Shared HLX- and TBX2-associated pathways were evaluated by Reactome enrichment analysis, and Hallmark Gene Set Enrichment Analysis compared castration-resistant prostate cancer (CRPC) bone metastases with high versus low HLX expression (GSE77930; n = 5/group). In vivo relevance was assessed in an orthotopic TBX2 dominant-negative PCa xenograft model. Results: Human PCa datasets showed that HLX expression was elevated in PCa versus normal prostate tissue and associated with higher Gleason grade, lymph node involvement, aggressive molecular subtypes, and shorter disease-free survival. HLX expression also positively correlated with TBX2 across human PCa cohorts. HLX- and TBX2-associated transcriptional programs converged on extracellular matrix organization, cell adhesion, NOTCH, and VEGF-MAPK signaling pathways. Furthermore, HLX-high CRPC bone metastases were enriched for epithelial-mesenchymal transition, NOTCH, TGF-<U+03B2>, inflammatory, angiogenic, hypoxic, and KRAS signaling pathways. Mechanistic studies showed that HLX knockdown suppressed extracellular matrix-associated genes and key NOTCH pathway components. ChIP demonstrated direct TBX2 binding to the HLX promoter, and genetic modulation of TBX2 expression established HLX as a downstream target of TBX2. Consistent with these findings, reduced HLX expression in orthotopic TBX2 dominant-negative xenografts was associated with loss of metastatic progression. Conclusions: HLX is a candidate biomarker of aggressive PCa and a direct transcriptional target of TBX2. These findings identify a previously unrecognized TBX2-HLX regulatory axis associated with metastatic transcriptional programs and aggressive disease in advanced PCa.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "41857678",
+      "title": "LncRNA-HLX-2-7/HLX axis-dependent metabolic reprogramming drives cancer progression in group 3 medulloblastoma.",
+      "journal": "Acta neuropathologica communications",
+      "publication_date": "2026 Mar 19",
+      "electronic_date": "2026 03 19",
+      "doi": "10.1186/s40478-026-02266-2",
+      "doi_url": "https://doi.org/10.1186%2Fs40478-026-02266-2",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41857678/",
+      "description": "The long noncoding RNA (lncRNA) lnc-HLX-2-7 and its host-coding transcription factor, HLX, are highly expressed in G3 MB and act as oncogenic drivers.",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Group 3 medulloblastoma (G3 MB) is an aggressive pediatric brain tumor with limited treatment options, necessitating the development of novel therapeutic strategies. The long noncoding RNA (lncRNA)<U+00A0>lnc-HLX-2-7<U+00A0>and its host-coding transcription factor,<U+00A0>HLX, are highly expressed in G3 MB and act as oncogenic drivers. However, their role in regulating metabolism in G3 MB remains poorly understood. In this study, we investigate the metabolic functions of lnc-HLX-2-7 in D425-Med and MED211 cells and uncover its role in regulating oxidative phosphorylation (OXPHOS) and ATP production through the TCA cycle. Our findings reveal that lnc-HLX-2-7 is an upstream regulator of HLX, which, in turn, directly controls the expression of OXPHOS-related genes. Specifically, inhibition of lnc-HLX-2-7 and HLX significantly reduces the expression of OXPHOS complexes I (NDUFB8), II (SDHB), and IV (MTCO1) by disrupting direct binding to and activating the promoters of these genes. Targeting oxidative phosphorylation with the small-molecule inhibitor IACS-010759 substantially inhibits G3 MB tumor progression in xenograft models, further supporting the critical role of OXPHOS in tumor progression. Rescue experiments demonstrate that overexpression of HLX in lnc-HLX-2-7-depleted cells restored OXPHOS gene expression and ATP production, confirming HLX as a downstream effector of lnc-HLX-2-7. These results highlight a coordinated lnc-HLX-2-7/HLX axis that regulates metabolism and oncogenesis in G3 MB. In conclusion, our findings establish lnc-HLX-2-7 and its host-coding gene, HLX, as critical regulators of OXPHOS reprogramming and propose these molecules as promising therapeutic targets for this high-risk MB subtype.",
+      "publication_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "41564533",
+      "title": "Integrated blood transcriptomic and metabolomic analyses reveal potential biomarkers associated with residual feed intake in meat ducks.",
+      "journal": "Poultry science",
+      "publication_date": "2026 Mar",
+      "electronic_date": "2026 01 18",
+      "doi": "10.1016/j.psj.2026.106484",
+      "doi_url": "https://doi.org/10.1016%2Fj.psj.2026.106484",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41564533/",
+      "description": "Weighted gene co-expression network analysis (WGCNA) combined with protein-protein interaction analysis identified HLX, CSF1R, MECR, RICTOR, and HTT as core genes associated with RFI, based on their network connectivity, differential expression patterns between HRFI and LRFI ducks, and evidence of selection signals (P < 0.05).",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Enhancing feed efficiency is central to improving both the economic viability and environmental sustainability of poultry production. Although previous research has documented how intestinal, hepatic, and muscular nutrient metabolism contributes to feed efficiency variation, less is known about corresponding differences in circulating blood. Residual feed intake (RFI) was measured in small-sized meat ducks from 21 to 42 days of age. From a natural population of 800 ducks, the eight individuals with the highest RFI and the eight with the lowest RFI were selected to form the low RFI (LRFI, RFI = -14.95) and high RFI (HRFI, RFI = 11.72) groups, respectively. Blood samples were collected at 21 days of age for plasma biochemical analysis, metabolomic profiling, and whole-blood transcriptomic analysis. Plasma biochemical analyses showed that LRFI ducks exhibited significantly reduced triglyceride (TG) concentrations and significantly elevated glucose (GLU) and creatine kinase (CK) levels relative to HRFI birds (P < 0.05). Metabolomic profiling further revealed significant suppression of the arachidonic acid and <U+03B1>-linolenic acid metabolic pathways in LRFI ducks (P < 0.05). Weighted gene co-expression network analysis (WGCNA) combined with protein-protein interaction analysis identified HLX, CSF1R, MECR, RICTOR, and HTT as core genes associated with RFI, based on their network connectivity, differential expression patterns between HRFI and LRFI ducks, and evidence of selection signals (P < 0.05). Integrated metabolomic-transcriptomic analyses further highlighted key blood-based indicators linked to RFI within the arachidonic acid pathway, including metabolites (PC-O, prostaglandin G2, thromboxane B2, and 5-oxo-ETE) and genes (GGT1, HPGDS, and LCN2), which may serve as early predictive markers for selecting LRFI ducks. Collectively, these results provide a systematic characterization of blood metabolic and transcriptional differences between ducks with divergent RFI and identify potential early blood-based biomarkers that may support the genetic improvement of feed efficiency in poultry.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "40929101",
+      "title": "HLX and SLC25A20: Immunologic regulators bridging ankylosing spondylitis and uveitis via multi-omics integration and machine learning.",
+      "journal": "PloS one",
+      "publication_date": "2025",
+      "electronic_date": "2025 09 10",
+      "doi": "10.1371/journal.pone.0332049",
+      "doi_url": "https://doi.org/10.1371%2Fjournal.pone.0332049",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40929101/",
+      "description": "HLX and SLC25A20 emerge as immunologic regulators bridging AS and uveitis pathogenesis.",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Ankylosing spondylitis (AS), a chronic inflammatory disorder affecting axial joints, is frequently complicated by uveitis. However, the molecular mechanisms linking AS to secondary uveitis remain poorly understood.\nWe integrated transcriptomic datasets from AS (GSE73754) and uveitis (GSE194060) cohorts to identify shared molecular pathways. Differential expression analysis, weighted gene co-expression network analysis (WGCNA), and machine learning (LASSO, SVM-RFE, random forest) were combined to prioritize biomarkers. Molecular docking was performed to evaluate drug-target interactions using Vina scores (<U+2264>-7 kcal/mol threshold).\nCross-disease analysis revealed 697 overlapping dysregulated genes (481 upregulated, 216 downregulated), enriched in GTPase signaling and immune pathways. WGCNA identified disease-specific co-expression modules (AS: brown/tan modules, r<U+2009>=<U+2009>0.39/0.35; uveitis: brown module, r<U+2009>=<U+2009>0.49). Machine learning nominated HLX and SLC25A20 as core biomarkers, demonstrating robust diagnostic accuracy in discovery (AS AUC: 0.688/0.700; uveitis AUC: 0.867/0.838) and validation cohorts (AS AUC: 0.653/0.667; uveitis AUC: 0.662/0.736). Immune profiling linked HLX to neutrophil infiltration (r<U+2009>=<U+2009>0.55, p<U+2009><<U+2009>0.01) and SLC25A20 to T helper cell regulation (r<U+2009>=<U+2009>0.36, p<U+2009><<U+2009>0.01). Molecular docking identified high-affinity ligands for SLC25A20, including amiodarone (-8.0 kcal/mol) and estradiol (-7.7 kcal/mol), with folic acid showing dual binding potential (HLX: -7.5 kcal/mol; SLC25A20: -8.2 kcal/mol).\nHLX and SLC25A20 emerge as immunologic regulators bridging AS and uveitis pathogenesis. These findings provide actionable targets for precision diagnostics and therapeutic development in AS-associated uveitis.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "40641399",
+      "title": "The Immunohistochemical Demonstration of the Dlx-5, HLX and TLX1 Proteins in the Bovine Gastric Compartments Throughout Prenatal Development.",
+      "journal": "Anatomia, histologia, embryologia",
+      "publication_date": "2025 Jul",
+      "electronic_date": null,
+      "doi": "10.1111/ahe.70053",
+      "doi_url": "https://doi.org/10.1111%2Fahe.70053",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40641399/",
+      "description": "The homeobox gene subfamily members Dlx-5, HLX and TLX1proteins are known to regulate several embryonic development processes, including body axis formation, limb development and organogenesis, and play critical roles in cell proliferation and differentiation.",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "The homeobox gene subfamily members Dlx-5, HLX and TLX1proteins are known to regulate several embryonic development processes, including body axis formation, limb development and organogenesis, and play critical roles in cell proliferation and differentiation. This study was designed to investigate the localisation and expression density levels of Dlx-5, HLX and TLX1 proteins in cells of bovine stomach compartments during gestation and to compare the immunoexpression between the stomach compartments. A total of 30 foetuses, morphologically normal, from each period of gestation (10 foetuses from each period), were used in the study. The foetuses were classified according to their age, determined by the crown-rump length (CRL) measurement, into the first (69-89<U+2009>days/10 foetuses), second (99-178<U+2009>days/10 foetuses) and third (188-269<U+2009>days/10 foetuses) periods of gestation. Then, the stomach (rumen, reticulum, omasum and abomasum) of foetuses from all three periods was processed with routine histological procedures, subjected to Crosman's triple staining, and an immunohistochemistry procedure was applied. As a result, it was observed that Dlx-5, HLX and TLX1 were expressed in the stomach compartments throughout gestation, with different expression intensities in cells, and the expression intensity was stronger in epithelial cells compared to stromal and smooth muscle cells. These results suggest that Dlx-5, HLX and TLX1 proteins may contribute to the structure of the bovine stomach and play a role in cell division, proliferation and differentiation, as well as in histogenesis, of the stomach.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "40003710",
+      "title": "Expression of Dlx-5 and HLX Proteins in Odontogenic Cysts.",
+      "journal": "Life (Basel, Switzerland)",
+      "publication_date": "2025 Feb 14",
+      "electronic_date": "2025 02 14",
+      "doi": "10.3390/life15020301",
+      "doi_url": "https://doi.org/10.3390%2Flife15020301",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/40003710/",
+      "description": "This study aimed to demonstrate the expression of Dlx-5 and HLX proteins in radicular and dentigerous cysts.",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Odontogenic cysts, commonly detected during routine examinations involving head and neck imaging such as orthopantomograms and computed tomography (CT), are classified into two groups: developmental and inflammatory. Radicular cysts, which belong to the inflammatory group, originate from odontogenic epithelium, while dentigerous cysts of developmental origin are observed as a result of peri-coronal expansion of fluid in the dental follicle. The diagnosis and identification of odontogenic cysts rely on clinical, radiographic, and histological evaluations. This study aimed to demonstrate the expression of Dlx-5 and HLX proteins in radicular and dentigerous cysts. A total of 40 radicular and 40 dentigerous cysts were obtained from patients who visited private oral and dental health clinics in Bing<U+00F6>l and Diyarbak<U+0131>r provinces. After undergoing routine histological procedures, the cysts were stained using Masson's Trichrome and immunohistochemistry techniques. As a result, the epithelium of radicular cysts was found to be keratinized stratified squamous, with hyaline (Rushton) bodies located within the epithelium. Dentigerous cysts, on the other hand, consisted of non-keratinized stratified squamous epithelium, rete ridges with hyperplastic areas, and inflammatory cell infiltrations. The immunoreactivity induced by Dlx-5 in epithelial and connective tissue cells of radicular and dentigerous cysts was found to be stronger than that of HLX. The positive expression of Dlx-5 and HLX proteins in radicular and dentigerous cysts suggests that these proteins may play a potential role in the pathogenesis of these cysts. Furthermore, it was considered that the expression of Dlx-5 and HLX might help reveal the behavioral differences between odontogenic cysts.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "39467637",
+      "title": "BACH1 as a key driver in rheumatoid arthritis fibroblast-like synoviocytes identified through gene network analysis.",
+      "journal": "Life science alliance",
+      "publication_date": "2025 Jan",
+      "electronic_date": "2024 10 28",
+      "doi": "10.26508/lsa.202402808",
+      "doi_url": "https://doi.org/10.26508%2Flsa.202402808",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39467637/",
+      "description": "Six of these TFs are new and have not been previously implicated in RA through ex vivo or in vivo studies, and included BACH1, HLX, and TGIF1.",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "RNA-sequencing and differential gene expression studies have significantly advanced our understanding of pathogenic pathways underlying rheumatoid arthritis (RA). Yet, little is known about cell-specific regulatory networks and their contributions to disease. In this study, we focused on fibroblast-like synoviocytes (FLS), a cell type central to disease pathogenesis and joint damage in RA. We used a strategy that computed sample-specific gene regulatory networks to compare network properties between RA and osteoarthritis FLS. We identified 28 transcription factors (TFs) as key regulators central to the signatures of RA FLS. Six of these TFs are new and have not been previously implicated in RA through ex vivo or in vivo studies, and included BACH1, HLX, and TGIF1. Several of these TFs were found to be co-regulated, and BACH1 emerged as the most significant TF and regulator. The main BACH1 targets included those implicated in fatty acid metabolism and ferroptosis. The discovery of BACH1 was validated in experiments with RA FLS. Knockdown of BACH1 in RA FLS significantly affected the gene expression signatures, reduced cell adhesion and mobility, interfered with the formation of thick actin fibers, and prevented the polarized formation of lamellipodia, all required for the RA destructive behavior of FLS. This study establishes BACH1 as a central regulator of RA FLS phenotypes and suggests its potential as a therapeutic target to selectively modulate RA FLS.",
+      "publication_types": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "39161769",
+      "title": "Cell-specific gene networks and drivers in rheumatoid arthritis synovial tissues.",
+      "journal": "Frontiers in immunology",
+      "publication_date": "2024",
+      "electronic_date": "2024 08 05",
+      "doi": "10.3389/fimmu.2024.1428773",
+      "doi_url": "https://doi.org/10.3389%2Ffimmu.2024.1428773",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39161769/",
+      "description": "Interestingly, fibroblast-like synoviocyte (FLS) and B cells were driven by multiple independent co-regulatory TF clusters that included MITF, HLX, BACH1 (FLS) and KLF13, FOSB, FOSL1 (B cells).",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Rheumatoid arthritis (RA) is a common autoimmune and inflammatory disease characterized by inflammation and hyperplasia of the synovial tissues. RA pathogenesis involves multiple cell types, genes, transcription factors (TFs) and networks. Yet, little is known about the TFs, and key drivers and networks regulating cell function and disease at the synovial tissue level, which is the site of disease. In the present study, we used available RNA-seq databases generated from synovial tissues and developed a novel approach to elucidate cell type-specific regulatory networks on synovial tissue genes in RA. We leverage established computational methodologies to infer sample-specific gene regulatory networks and applied statistical methods to compare network properties across phenotypic groups (RA versus osteoarthritis). We developed computational approaches to rank TFs based on their contribution to the observed phenotypic differences between RA and controls across different cell types. We identified 18 (fibroblast-like synoviocyte), 16 (T cells), 19 (B cells) and 11 (monocyte) key regulators in RA synovial tissues. Interestingly, fibroblast-like synoviocyte (FLS) and B cells were driven by multiple independent co-regulatory TF clusters that included MITF, HLX, BACH1 (FLS) and KLF13, FOSB, FOSL1 (B cells). However, monocytes were collectively governed by a single cluster of TF drivers, responsible for the main phenotypic differences between RA and controls, which included RFX5, IRF9, CREB5. Among several cell subset and pathway changes, we also detected reduced presence of Natural killer T (NKT) cells and eosinophils in RA synovial tissues. Overall, our novel approach identified new and previously unsuspected Key driver genes (KDG), TF and networks and should help better understanding individual cell regulation and co-regulatory networks in RA pathogenesis, as well as potentially generate new targets for treatment.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "39202339",
+      "title": "Identification of Gene Regulatory Networks in B-Cell Progenitor Differentiation and Leukemia.",
+      "journal": "Genes",
+      "publication_date": "2024 Jul 24",
+      "electronic_date": "2024 07 24",
+      "doi": "10.3390/genes15080978",
+      "doi_url": "https://doi.org/10.3390%2Fgenes15080978",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39202339/",
+      "description": "Knockdown and overexpression experiments and subsequent RNA quantification of TF-encoding genes in selected model cell lines revealed activating, inhibitory or absent connections between nine TFs operating in early B-cell development, including HLX, MSX1, IRX1, MEIS1, ETS2, ERG, SPIB, EOMES, and TBX21.",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Pro-B- and pre-B-cells are consecutive entities in early B-cell development, representing cells of origin for B-cell precursor acute lymphoid leukemia (BCP-ALL). Normal B-cell differentiation is critically regulated by specific transcription factors (TFs). Accordingly, TF-encoding genes are frequently deregulated or mutated in BCP-ALL. Recently, we described TF-codes which delineate physiological activities of selected groups of TF-encoding genes in hematopoiesis including B-cell development. Here, we exploited these codes to uncover regulatory connections between particular TFs in pro-B- and pre-B-cells via an analysis of developmental TFs encoded by NKL and TALE homeobox genes and by ETS and T-box genes. Comprehensive expression analyses in BCP-ALL cell lines helped identify validated models to study their mutual regulation in vitro. Knockdown and overexpression experiments and subsequent RNA quantification of TF-encoding genes in selected model cell lines revealed activating, inhibitory or absent connections between nine TFs operating in early B-cell development, including HLX, MSX1, IRX1, MEIS1, ETS2, ERG, SPIB, EOMES, and TBX21. In addition, genomic profiling revealed BCP-ALL subtype-specific copy number alterations of ERG at 21q22, while a deletion of the TGFbeta-receptor gene TGFBR2 at 3p24 resulted in an upregulation of EOMES. Finally, we combined the data to uncover gene regulatory networks which control normal differentiation of early B-cells, collectively endorsing more detailed evaluation of BCP-ALL subtypes.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    },
+    {
+      "pmid": "39038326",
+      "title": "Identification and Validation of Prognostic Risk Model for Female-Specific Lung Adenocarcinoma.",
+      "journal": "Alternative therapies in health and medicine",
+      "publication_date": "2024 Jul 19",
+      "electronic_date": "2024 07 19",
+      "doi": null,
+      "doi_url": null,
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/39038326/",
+      "description": "Among them, ABHD6, CABLES1, CXCL5, DNAJB4, EFNB2, HLX, MEOX2, MTMR10, PPFIBP1, and RERG were down-regulated in LUAD, while MFSD6L and SOX9 were up-regulated in LUAD (P < .0001).",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Lung adenocarcinoma (LUAD) is a major pathological subtype of non-small cell lung cancer and occurs more commonly in females than other lung cancer subtypes. Studying female-specific oncogenes in LUAD may provide personalized medicine approaches for females with LUAD.\nWe aimed to identify the possible female-specific oncogenes of LUAD and understand their potential impact on treatment strategies for specific cancer subgroups.\nThe gene expression profiles of LUAD were downloaded from The Cancer Genome Atlas (TCGA) database and the GSE72094 dataset. TCGA database is currently the largest database of cancer genetic information. Female-specific differentially expressed genes (DEGs) were identified by R programming software. Functional annotation of DEGs was conducted based on KEGG pathway enrichment analysis. Univariate and multivariate Cox proportion analyses were applied to construct a prognostic risk score model with the DEGs. Kaplan<U+2012>Meier and ROC curves were plotted to validate the predictive effect of the prognostic DEGs signature. Gene set enrichment analysis (GSEA) was applied to identify the potential pathways in the high-risk groups in female LUAD. Finally, the immunohistochemical staining (IHC) was conducted to verify the expression of CABLES1 in human LUAD samples.\nWe constructed a prognostic signature that includes 12 female-specific DEGs (P < .05). Among them, ABHD6, CABLES1, CXCL5, DNAJB4, EFNB2, HLX, MEOX2, MTMR10, PPFIBP1, and RERG were down-regulated in LUAD, while MFSD6L and SOX9 were up-regulated in LUAD (P < .0001). The Kaplan-Meier, and receiver operator characteristic (ROC) curves revealed efficient and stable prediction of the prognostic signature in the female LUAD patients. It was showed the risk score model has a good predictive effect on the prognosis of female LUAD patients but is not effective for male patients (P < .0001). The ROC curve showed that the areas under the curve (AUC) of first-, third- and fifth-year survival were 0.70, 0.69, and 0.79, respectively, which indicated good sensitivity and specificity of the 12-gene risk score algorithm in predicting the prognosis of female LUAD. GSEA revealed that the high-risk group was significantly enriched in the EMT, E2F targets, Myc targets, G2/M checkpoint, glycolysis, hypoxia, and mTORC1 signaling pathways (P < .05). Immunohistochemical staining showed lower CABLES1 expression was associated with higher pTNM stage in female LUAD but not in male LUAD (P < .05).\nOur study constructed and verified a prognostic signature based on 12 female-specific DEGs of LUAD, which could improve the understanding of sex-related risk factors involved in LUAD carcinogenesis and progression, and may provide personalized treatment strategies for female LUAD patients.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    }
+  ],
+  "provenance": {
+    "source": "NCBI PubMed E-utilities",
+    "query": "(\"HLX\"[Title/Abstract] OR \"HB24\"[Title/Abstract] OR \"HLX1\"[Title/Abstract])",
+    "query_translation": "\"HLX\"[Title/Abstract] OR \"HB24\"[Title/Abstract] OR \"HLX1\"[Title/Abstract]",
+    "searched_terms": [
+      "HLX",
+      "HB24",
+      "HLX1"
+    ],
+    "alias_resolution": {
+      "aliases": ["HB24", "HLX1"],
+      "gene_id": "3142",
+      "official_symbol": "HLX",
+      "description": "H2.0 like homeobox",
+      "status": "Human gene symbol verified against NCBI Gene; documented aliases included"
+    },
+    "sort": "PubMed publication date descending (pub_date), not indexing date",
+    "date_definition": "Journal citation date displayed verbatim, with electronic publication date separately when provided; partial dates are not invented",
+    "summary_method": "One verbatim abstract sentence, preferring gene mentions and conclusions/results; title-only fallback when no abstract is supplied",
+    "screening": {
+      "records_checked": 50,
+      "excluded_pmids": [
+        "42621240",
+        "41001431",
+        "40008227",
+        "39222554",
+        "33844835"
+      ],
+      "rule": "Require a standalone gene symbol or alias in title/abstract; hyphenated drug codes such as HLX-02 do not qualify",
+      "maximum_records": 50
+    },
+    "limitations": "Keyword/alias matches can include unrelated uses or non-human studies; no implication that a paper studies medulloblastoma unless separately checked",
+    "search_warnings": null,
+    "retrieved_at": "2026-09-18T10:07:38Z",
+    "cache_hit": false,
+    "raw_source_dir": "C:/Users/dng/Documents/r2DepmapMCPtest/r2-depmap/.cache/r2-depmap/pubmed_sources/retrieval-8ba052083d4d"
+  }
+}

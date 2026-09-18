@@ -1,0 +1,47 @@
+{
+  "controls": [
+    {
+      "tag": "input",
+      "name": null,
+      "type": "button",
+      "value": "Reset to full dataset",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": null,
+      "type": "button",
+      "value": "Use selected as subset",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": null,
+      "type": "button",
+      "value": "Reset to pre-selected",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": null,
+      "type": "button",
+      "value": "Create Track from selected",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": null,
+      "type": "button",
+      "value": "OK",
+      "options": []
+    },
+    {
+      "tag": "input",
+      "name": null,
+      "type": "button",
+      "value": "Cancel",
+      "options": []
+    }
+  ],
+  "links": []
+}

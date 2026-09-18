@@ -1,0 +1,11 @@
+{
+  "r2_base_url": "https://hgserver1.amc.nl/cgi-bin/r2/main.cgi",
+  "r2_dataset_table": "ps_avgpres_gse85217geo763_hugene11t",
+  "r2_dataset_label": "Tumor Medulloblastoma - Cavalli - 763 - rma_sketch - hugene11t",
+  "r2_disease": "medulloblastoma",
+  "r2_default_track": "subgroup",
+  "r2_default_group_1": "group3",
+  "r2_default_group_2": "group4",
+  "depmap_default_model_regex": "(?i)medulloblastoma",
+  "cache_dir": ".cache/r2-depmap"
+}

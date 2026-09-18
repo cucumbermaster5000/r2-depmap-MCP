@@ -1,0 +1,5 @@
+expression_group,metastasis,n,fraction
+"Low","M0",206,0.72027972027972
+"High","M0",191,0.665505226480836
+"Low","Metastatic",80,0.27972027972028
+"High","Metastatic",96,0.334494773519164

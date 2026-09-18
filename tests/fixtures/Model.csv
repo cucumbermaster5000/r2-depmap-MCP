@@ -1,0 +1,4 @@
+ModelID,CellLineName,CCLEName,OncotreeLineage,OncotreePrimaryDisease
+ACH-000001,D341,D341_MEDULLOBLASTOMA,CNS,Medulloblastoma
+ACH-000002,D283,D283_MEDULLOBLASTOMA,CNS,Medulloblastoma
+ACH-000003,A549,A549_LUNG,Lung,Non-Small Cell Lung Cancer

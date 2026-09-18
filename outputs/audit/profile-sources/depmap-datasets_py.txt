@@ -1,0 +1,606 @@
+from typing import List, Optional, Set, Annotated
+from logging import getLogger
+from ..db.util import transaction
+from breadbox.utils.asserts import index_error_msg
+from pydantic import Json
+
+from pydantic import Json
+
+from fastapi import (
+    APIRouter,
+    Depends,
+    File,
+    Form,
+    HTTPException,
+    UploadFile,
+    Body,
+    Response,
+    Query,
+)
+
+
+from breadbox.db.session import SessionWithUser
+from breadbox.celery_task import utils
+
+from breadbox.compute.dataset_tasks import (
+    get_file_dict,
+    run_upload_dataset,
+)
+from ..schemas.custom_http_exception import UserError, DatasetNotFoundError
+
+from ..config import Settings, get_settings
+from breadbox.crud.access_control import PUBLIC_GROUP_ID
+from ..crud import dataset as dataset_crud
+from ..crud import dimension_types as type_crud
+from ..crud.dimension_ids import get_dataset_feature_by_given_id
+
+from ..models.dataset import (
+    Dataset as DatasetModel,
+    ValueType,
+    MatrixDataset,
+    TabularDataset,
+)
+
+from ..io.filestore_crud import get_feature_slice
+from ..schemas.dataset import (
+    AddDatasetResponse,
+    DatasetResponse,
+    DatasetMetadata,
+    DimensionSearchIndexResponse,
+    FeatureResponse,
+    FeatureSampleIdentifier,
+    MatrixDimensionsInfo,
+    TabularDimensionsInfo,
+    UpdateDatasetParams,
+    MatrixDatasetUpdateParams,
+    TabularDatasetUpdateParams,
+    DimensionDataResponse,
+    SliceQueryIdentifierType,
+)
+from breadbox.schemas.context import SliceQueryRef
+from breadbox.service import dataset as dataset_service
+from breadbox.service import metadata as metadata_service
+from breadbox.service import slice as slice_service
+from .dependencies import get_db_with_user, get_user, get_cache
+
+from breadbox.depmap_compute_embed.slice import SliceQuery
+from ..utils.caching import CachingCaller
+
+router = APIRouter(prefix="/datasets", tags=["datasets"])
+log = getLogger(__name__)
+
+
+def _to_internal_slice_query(ref: SliceQueryRef) -> SliceQuery:
+    """Convert a Pydantic SliceQueryRef to the internal SliceQuery dataclass."""
+    return SliceQuery(
+        dataset_id=ref.dataset_id,
+        identifier=ref.identifier,
+        identifier_type=ref.identifier_type.value,
+        reindex_through=_to_internal_slice_query(ref.reindex_through)
+        if ref.reindex_through
+        else None,
+    )
+
+
+def _get_root_query(sq: SliceQuery) -> SliceQuery:
+    """Chase reindex_through to find the root (innermost) step in the chain."""
+    current = sq
+    while current.reindex_through is not None:
+        current = current.reindex_through
+    return current
+
+
+@router.get(
+    "/",
+    operation_id="get_datasets",
+    response_model=List[DatasetResponse],
+    response_model_by_alias=False,
+    response_model_exclude_none=False,
+)
+def get_datasets(
+    feature_id: Optional[str] = None,
+    feature_type: Optional[str] = None,
+    sample_id: Optional[str] = None,
+    sample_type: Optional[str] = None,
+    value_type: Optional[ValueType] = None,
+    db: SessionWithUser = Depends(get_db_with_user),
+    user: str = Depends(get_user),
+):
+    """
+    Get metadata for all datasets available to current user.
+
+    If `feature_id` and `feature_type` are specified, we return only the datasets that contain that feature.
+
+    If `feature_type` is specified without `feature_id`, then we return the datasets
+    that have that `feature_type`.
+
+    Similar for `sample_id` and `sample_type`.
+    """
+    datasets = dataset_crud.get_datasets(
+        db, user, feature_id, feature_type, sample_id, sample_type, value_type
+    )
+    return [dataset for dataset in datasets]
+
+
+def _get_required_dataset(db: SessionWithUser, dataset_id: str):
+    dataset = dataset_crud.get_dataset(db, db.user, dataset_id)
+    if dataset is None:
+        raise DatasetNotFoundError(f"Could not find dataset with id {dataset_id}")
+    return dataset
+
+
+def _get_required_matrix_dataset(db: SessionWithUser, dataset_id: str):
+    """
+        fetches matrix dataset and raises a user error if dataset is not found or it's the wrong type
+    """
+    dataset = _get_required_dataset(db, dataset_id)
+    if not isinstance(dataset, MatrixDataset):
+        raise UserError(f"This endpoint only works with MatrixDatasets")
+    return dataset
+
+
+def _get_required_tabular_dataset(db: SessionWithUser, dataset_id: str):
+    """
+        fetches matrix dataset and raises a user error if dataset is not found or it's the wrong type
+    """
+    dataset = _get_required_dataset(db, dataset_id)
+    if not isinstance(dataset, TabularDataset):
+        raise UserError(f"This endpoint only works with MatrixDatasets")
+    return dataset
+
+
+@router.get(
+    "/features/{dataset_id}", operation_id="get_dataset_features",
+)
+def get_dataset_features(
+    db: Annotated[SessionWithUser, Depends(get_db_with_user)],
+    user: Annotated[str, Depends(get_user)],
+    dataset_id: str,
+):
+    """
+    Get information about each feature belonging to a given dataset.
+    """
+    dataset = _get_required_matrix_dataset(db, dataset_id)
+
+    feature_labels_by_id = metadata_service.get_matrix_dataset_feature_labels_by_id(
+        db=db, user=user, dataset=dataset,
+    )
+    return [{"id": id, "label": label} for id, label in feature_labels_by_id.items()]
+
+
+@router.get(
+    "/samples/{dataset_id}", operation_id="get_dataset_samples",
+)
+def get_dataset_samples(
+    db: Annotated[SessionWithUser, Depends(get_db_with_user)],
+    user: Annotated[str, Depends(get_user)],
+    dataset_id: str,
+):
+    """
+    Get information about each sample belonging to a given dataset.
+    For example, if the samples are depmap models, then this should
+    return depmap_ids as ids and cell line names as labels.
+    """
+    dataset = _get_required_matrix_dataset(db, dataset_id)
+
+    sample_labels_by_id = metadata_service.get_matrix_dataset_sample_labels_by_id(
+        db=db, user=user, dataset=dataset,
+    )
+    return [{"id": id, "label": label} for id, label in sample_labels_by_id.items()]
+
+
+@router.get(
+    "/features/data/",
+    operation_id="get_feature_data",
+    response_model=List[FeatureResponse],
+)
+def get_feature_data(
+    dataset_ids: List[str] = Query(
+        default=[],
+        alias="dataset_ids",
+        description="dataset UUIDs specifying which dataset contains each given feature",
+    ),
+    feature_ids: List[str] = Query(
+        default=[],
+        alias="feature_ids",
+        description="natural keys specifying the features for which data should be retrieved",
+    ),
+    db: SessionWithUser = Depends(get_db_with_user),
+    user: str = Depends(get_user),
+    settings: Settings = Depends(get_settings),
+):
+    """
+    Load data for each of the given dataset_id, feature_id pairs.
+    This endpoint does not do any filtering or grouping of feature values.
+    """
+    if len(dataset_ids) != len(feature_ids):
+        raise UserError(
+            f"Expected dataset_id, feature_id pairs. The number of dataset ids and feature ids provided should be equal."
+        )
+
+    feature_data = []
+    for i in range(len(feature_ids)):
+        feature = get_dataset_feature_by_given_id(
+            db=db, dataset_id=dataset_ids[i], feature_given_id=feature_ids[i]
+        )
+        dataset = feature.dataset
+        if not isinstance(dataset, MatrixDataset):
+            raise UserError(
+                f"Expected a matrix dataset. Unable to load feature data for tabular dataset: '{feature.dataset_id}' "
+            )
+        assert feature.index is not None, index_error_msg(feature)
+        # Read data from the HDF5 file
+        df = get_feature_slice(dataset, [feature.index], settings.filestore_location)
+        # Get the feature label
+        if dataset.feature_type_name:
+            # Note: this would be faster if we had a query to load one label instead of all labels - but performance hasn't been an issue
+            feature_labels_by_id = metadata_service.get_matrix_dataset_feature_labels_by_id(
+                db=db, user=user, dataset=dataset
+            )
+            label = feature_labels_by_id[feature.given_id]
+        else:
+            label = feature.given_id
+        feature_response = FeatureResponse(
+            values=df[feature.given_id].to_dict(),
+            label=label,
+            feature_id=feature.given_id,
+            dataset_id=feature.dataset_id,
+            units=dataset.units,
+            dataset_label=dataset.name,
+        )
+        feature_data.append(feature_response)
+    return feature_data
+
+
+@router.get(
+    "/{dataset_id}",
+    operation_id="get_dataset",
+    response_model=DatasetResponse,
+    response_model_by_alias=False,
+)
+def get_dataset(
+    dataset_id: str, db: Annotated[SessionWithUser, Depends(get_db_with_user)],
+):
+    """Get metadata for a dataset, if it exists and is available to the user."""
+    dataset = _get_required_dataset(db, dataset_id)
+    return dataset
+
+
+@router.post(
+    "/matrix/{dataset_id}", operation_id="get_matrix_dataset_data",
+)
+def get_matrix_dataset_data(
+    db: Annotated[SessionWithUser, Depends(get_db_with_user)],
+    settings: Annotated[Settings, Depends(get_settings)],
+    dataset_id: str,
+    matrix_dimensions_info: Annotated[
+        MatrixDimensionsInfo, Body(default_factory=MatrixDimensionsInfo)
+    ],
+    strict: Annotated[
+        bool,
+        Query(
+            description="If 'strict' set to True, missing indices or columns will return an error"
+        ),
+    ] = False,
+):
+    dataset = _get_required_matrix_dataset(db, dataset_id)
+
+    df = dataset_service.get_subsetted_matrix_dataset_df(
+        db, dataset, matrix_dimensions_info, settings.filestore_location, strict,
+    )
+
+    return Response(df.to_json(), media_type="application/json")
+
+
+@router.post(
+    "/tabular/{dataset_id}", operation_id="get_tabular_dataset_data",
+)
+async def get_tabular_dataset_data(
+    db: Annotated[SessionWithUser, Depends(get_db_with_user)],
+    cache: Annotated[CachingCaller, Depends(get_cache)],
+    dataset_id: str,
+    tabular_dimensions_info: Annotated[
+        TabularDimensionsInfo, Body(default_factory=TabularDimensionsInfo)
+    ],
+    strict: Annotated[
+        bool,
+        Query(
+            description="If 'strict' set to True, missing indices or columns will return an error"
+        ),
+    ] = False,
+):
+    tabular_dataset = _get_required_tabular_dataset(db, dataset_id)
+
+    def fetch_df(db_: SessionWithUser):
+        return dataset_service.get_subsetted_tabular_dataset_df(
+            db_, db_.user, tabular_dataset, tabular_dimensions_info, strict
+        ).to_json()
+
+    # only allow caching of requests for public datasets
+    df_as_json = await cache.memoize_db_query(
+        db,
+        lambda: dataset_crud.is_public_dataset(tabular_dataset),
+        fetch_df,
+        depends_on=[
+            str(tabular_dataset.id),
+            tabular_dimensions_info.model_dump(mode="json"),
+            strict,
+        ],
+    )
+
+    return Response(df_as_json, media_type="application/json")
+
+
+@router.post("/data/{dataset_id}", operation_id="get_dataset_data", deprecated=True)
+def get_dataset_data(
+    db: Annotated[SessionWithUser, Depends(get_db_with_user)],
+    settings: Annotated[Settings, Depends(get_settings)],
+    dataset_id: str,
+    features: Annotated[
+        Optional[List[str]],
+        Body(
+            description="list of feature labels or ids for which data should be retrieved",
+        ),
+    ] = None,
+    feature_identifier: Annotated[
+        Optional[FeatureSampleIdentifier],
+        Body(
+            description="Denotes whether the list of features are given as ids or feature labels",
+        ),
+    ] = None,
+    samples: Annotated[
+        Optional[List[str]],
+        Body(
+            description="list of sample labels or ids for which data should be retrieved",
+        ),
+    ] = None,
+    sample_identifier: Annotated[
+        Optional[FeatureSampleIdentifier],
+        Body(
+            description="Denotes whether the list of samples are given as ids or sample labels",
+        ),
+    ] = None,
+):
+    """Get dataset dataframe subset given the features and samples. Filtering should be possible using either labels (cell line name, gene name, etc.) or ids (depmap_id, entrez_id, etc.). If features or samples are not specified, return all features or samples"""
+    dataset = _get_required_matrix_dataset(db, dataset_id)
+
+    dim_info = MatrixDimensionsInfo(
+        features=features,
+        feature_identifier=feature_identifier,
+        samples=samples,
+        sample_identifier=sample_identifier,
+    )
+
+    df = dataset_service.get_subsetted_matrix_dataset_df(
+        db, dataset, dim_info, settings.filestore_location
+    )
+
+    # NOTE: to_json() is better than to_dict() bc FastAPI behind the scenes automatically converts the non-JSON objects into JSON-compatible data using the jsonable_encoder, and then uses the Python standard json.dumps() to serialise the object which is quite slow.
+    # To avoid the extra processing, use to_json() method and put the JSON string in a custom Response and return it directly
+    # See: https://stackoverflow.com/questions/71203579/how-to-return-a-csv-file-pandas-dataframe-in-json-format-using-fastapi and https://stackoverflow.com/questions/73564771/fastapi-is-very-slow-in-returning-a-large-amount-of-json-data/73580096#73580096
+    return Response(df.to_json(), media_type="application/json")
+
+
+@router.get(
+    "/dimensions/",
+    operation_id="get_dimensions",
+    response_model=List[DimensionSearchIndexResponse],
+)
+def get_dimensions(
+    limit: int,
+    include_referenced_by: str = "F",
+    prefix: Annotated[Optional[List[str]], Query()] = None,
+    # curiously, when switching `substring` from str to list, I had to explictly
+    # annotate it so that fastapi would look for it as a query parameter and not
+    # look for it in the payload body.
+    substring: Annotated[Optional[List[str]], Query()] = None,
+    type_name: Optional[str] = None,
+    db: SessionWithUser = Depends(get_db_with_user),
+    user: str = Depends(get_user),
+):
+    """
+    Get dimension search index results for the given prefix, with results ordered by priority and then label.
+    """
+
+    if include_referenced_by not in ["T", "F"]:
+        raise HTTPException(
+            400, "if provided, include_referenced_by must either be 'T' or 'F'"
+        )
+
+    if substring is None:
+        substring = []
+
+    if prefix is None:
+        prefix = []
+
+    search_index_entries = dataset_crud.get_dataset_dimension_search_index_entries(
+        db=db,
+        user=user,
+        prefixes=prefix,
+        dimension_type_name=type_name,
+        limit=limit,
+        substrings=substring,
+        include_referenced_by=(include_referenced_by == "T"),
+    )
+
+    return search_index_entries
+
+
+@router.post(
+    "/dimension/data/",
+    operation_id="get_dimension_data",
+    response_model=DimensionDataResponse,
+)
+def get_dimension_data(
+    # TODO: This endpoint inlines the SliceQuery fields as individual Body() params
+    # instead of referencing the SliceQuery schema directly. This is historical drift.
+    # We're keeping it this way for now to avoid breaking the auto-generated Breadbox
+    # Python client and the Breadbox Facade, which may depend on the Body_get_dimension_data
+    # schema name and structure. Once we've confirmed those consumers can handle the
+    # change, we should refactor this to accept a single SliceQuery (or SliceQueryRef)
+    # body parameter, which would also make the OpenAPI spec self-documenting.
+    dataset_id: Annotated[str, Body(description="The UUID or given ID of a dataset.")],
+    identifier: Annotated[
+        str,
+        Body(
+            description="A dimension identifier of the specified type (id, label, etc.)."
+        ),
+    ],
+    identifier_type: Annotated[
+        SliceQueryIdentifierType,
+        Body(
+            description="Denotes the type of identifier being used and the axis being queried."
+        ),
+    ],
+    reindex_through: Annotated[
+        Optional[SliceQueryRef],
+        Body(
+            description="Optional chain of FK joins to reindex the result by a different dimension type."
+        ),
+    ] = None,
+    indices: Annotated[
+        Optional[List[str]],
+        Body(
+            description=(
+                "Optional dimension IDs to restrict the result to. Only supported for "
+                "tabular columns, and not in combination with `reindex_through`. IDs "
+                "the dataset has no row for are omitted rather than treated as an error."
+            )
+        ),
+    ] = None,
+    db: SessionWithUser = Depends(get_db_with_user),
+    settings: Settings = Depends(get_settings),
+):
+    """
+    Load all values, IDs, and labels for a given dimension (specified by SliceQuery).
+    """
+    parsed_slice_query = SliceQuery(
+        dataset_id=dataset_id,
+        identifier=identifier,
+        identifier_type=identifier_type.name,
+        reindex_through=_to_internal_slice_query(reindex_through)
+        if reindex_through
+        else None,
+    )
+    slice_values_by_id = slice_service.get_slice_data(
+        db, settings.filestore_location, parsed_slice_query, indices=indices
+    )
+
+    # When reindex_through is present, the result is indexed by the root's entity IDs,
+    # so labels must come from the root's dimension type, not the leaf's.
+    label_query = parsed_slice_query
+    if parsed_slice_query.reindex_through is not None:
+        label_query = _get_root_query(parsed_slice_query)
+
+    labels_by_id = metadata_service.get_labels_for_slice_type(db, label_query)
+
+    # Only the values which have corresponding metadata should be returned
+    all_dataset_given_ids = slice_values_by_id.index.to_list()
+    result_given_ids: list[str] = [
+        id for id in all_dataset_given_ids if id in labels_by_id
+    ]
+
+    # Ensure the values and labels are similarly filtered and ordered
+    result_values = [slice_values_by_id[id] for id in result_given_ids]
+    result_labels = [labels_by_id[id] for id in result_given_ids]
+
+    return {
+        "ids": result_given_ids,
+        "labels": result_labels,
+        "values": result_values,
+    }
+
+
+@router.patch(
+    "/{dataset_id}",
+    operation_id="update_dataset",
+    response_model=DatasetResponse,
+    response_model_by_alias=False,
+)
+def update_dataset(
+    dataset_id: str,
+    dataset_update_params: UpdateDatasetParams,
+    db: Annotated[SessionWithUser, Depends(get_db_with_user)],
+    user: Annotated[str, Depends(get_user)],
+):
+    """
+    Update the dataset metadata
+
+    The following parameters may be provided or omitted if no change for the value:
+    `format` - Required parameter. Must be 'matrix' or 'tabular' and match the format of the given dataset
+    `name` - Optional parameter. Name of dataset
+    `data_type` - Optional parameter. Data type grouping for your dataset
+    `group_id` - Optional parameter. Id of the group the dataset belongs to
+    `priority` - Optional parameter. Numeric value representing priority of the dataset within its `data_type`
+    `dataset_metadata` - Optional parameter. A dictionary of additional dataset metadata that is not already provided
+    `units` - Optional parameter for matrix dataset only. Units for the values in the dataset
+
+    """
+    dataset = _get_required_dataset(db, dataset_id)
+    if dataset.format == "matrix_dataset":
+        if not isinstance(dataset_update_params, MatrixDatasetUpdateParams):
+            raise UserError(
+                "Allowed parameters to update for dataset with `matrix` format are `name`, `units`, `data_type`, `group_id`, `priority` and `dataset_metadata`. Please make sure your request body contains those parameters with the correct value types!"
+            )
+    if dataset.format == "tabular_dataset":
+        if not isinstance(dataset_update_params, TabularDatasetUpdateParams):
+            raise UserError(
+                "Allowed parameters to update for dataset with `tabular` format are `name`, `data_type`, `group_id`, `priority` and `dataset_metadata`. Please make sure your request body contains those parameters with the correct value types!"
+            )
+
+    with transaction(db):
+        # before calling the method to update, check to make sure the given_id either does not already exist
+        # or it is already assigned to this dataset (in which case, updating it will have no effect)
+        if dataset_update_params.given_id is not None:
+            existing_dataset = dataset_crud.get_dataset(
+                db, db.user, dataset_update_params.given_id
+            )
+            if existing_dataset is not None and existing_dataset.id != dataset.id:
+                raise HTTPException(
+                    409,
+                    f"A dataset with the new given id {dataset_update_params.given_id} already exists.",
+                )
+
+        updated_dataset = dataset_crud.update_dataset(
+            db, user, dataset, dataset_update_params
+        )
+
+    return updated_dataset
+
+
+@router.delete(
+    "/{dataset_id}", operation_id="remove_dataset",
+)
+def delete_dataset(
+    dataset_id: str,
+    db: SessionWithUser = Depends(get_db_with_user),
+    user: str = Depends(get_user),
+    settings: Settings = Depends(get_settings),
+):
+    """Delete a dataset, if the user has write permissions for the containing group.
+
+    `dataset_id` - UUID or the human-readable dataset given ID.
+    """
+    dataset = dataset_crud.get_dataset(db, user, dataset_id)
+    if dataset is None:
+        raise DatasetNotFoundError(f"Dataset '{dataset_id}' not found")
+
+    if not dataset_crud.user_has_access_to_group(
+        dataset.group, user, write_access=True
+    ):
+        raise HTTPException(403, "You do not have permission to delete this dataset")
+
+    # Dimension type metadata datasets must not be used in other datasets
+    if dataset.format == "tabular_dataset":
+        dim_type = type_crud.get_dimension_type(db, dataset.index_type_name)
+        # We should always have a dimension type for tabular datasets
+        assert dim_type is not None
+        if dim_type.dataset_id == str(dataset_id):
+            raise UserError(
+                f"Cannot delete {dim_type.axis} type {dim_type.name}'s metadata without first deleting {dim_type.name}!"
+            )
+
+    with transaction(db):
+        if dataset_crud.delete_dataset(db, user, dataset, settings.filestore_location):
+            return {"message": "Dataset deleted!"}
+    raise HTTPException(400)

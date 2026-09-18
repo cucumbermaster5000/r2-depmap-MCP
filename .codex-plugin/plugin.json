@@ -1,0 +1,24 @@
+{
+  "name": "r2-depmap",
+  "version": "0.1.0",
+  "description": "Combine R2 patient expression with DepMap gene dependencies.",
+  "author": {
+    "name": "Dave Ng"
+  },
+  "license": "MIT",
+  "keywords": ["R2", "DepMap", "medulloblastoma", "gene-expression", "dependency"],
+  "interface": {
+    "displayName": "R2 + DepMap",
+    "shortDescription": "Prioritize dependencies using patient expression.",
+    "longDescription": "Queries the public Cavalli medulloblastoma cohort in R2, combines subgroup expression with local DepMap releases, and ranks candidate dependencies with transparent statistics and provenance.",
+    "developerName": "Dave Ng",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Analysis"],
+    "defaultPrompt": [
+      "Rank Group 3-enriched DepMap dependencies.",
+      "Compare Group 3 with Group 4 expression.",
+      "Show dependency evidence for HLX."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

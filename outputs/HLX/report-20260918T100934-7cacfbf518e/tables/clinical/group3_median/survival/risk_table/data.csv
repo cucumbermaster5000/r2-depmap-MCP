@@ -1,0 +1,9 @@
+group,time_years,n_at_risk
+"Low",0,56
+"Low",5,18
+"Low",10,5
+"Low",15,1
+"High",0,57
+"High",5,19
+"High",10,6
+"High",15,2

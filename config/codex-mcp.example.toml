@@ -1,0 +1,8 @@
+# Copy this section into your Codex MCP configuration, or use the command in README.
+# Paths are for this machine. Change them if the project or R installation moves.
+[mcp_servers.r2-mb-v1]
+command = 'C:\Program Files\R\R-4.6.1\bin\Rscript.exe'
+args = ['--vanilla', 'C:\Users\dng\Documents\r2DepmapMCPtest\r2-depmap\R\server.R']
+cwd = 'C:\Users\dng\Documents\r2DepmapMCPtest\r2-depmap'
+startup_timeout_sec = 30
+tool_timeout_sec = 300

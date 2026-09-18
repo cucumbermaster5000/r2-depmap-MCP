@@ -1,0 +1,505 @@
+import {fetchGetJson} from './utils/fetch.js';
+import {trackFromGrid} from './general/addTrackSelectFromGrid.js';
+import {promiseRequireJS} from './utils/promiseRequireJS.js';
+
+const [$] = await promiseRequireJS(['jquery', 'jqx-all']);
+
+function setSubset({subsetName, subsetValue = '', subsetDisplay = 'None'}) {
+    const subsetInput = document.getElementById(`subset_input-${subsetName}`);
+    subsetInput.value = subsetValue;
+    subsetInput.dispatchEvent(new Event('change'));
+    const $subsetContainer = $(`#subset_container-${subsetName}`);
+    $subsetContainer.empty();
+    const $subsetDisplayDiv = $(`<div id='subset_display-${subsetName}'>${subsetDisplay}</div>`);
+    $subsetContainer.append($subsetDisplayDiv);
+    const $resetSubset = $(`#reset_subset-${subsetName}`);
+    if (subsetValue) {
+        $resetSubset.show();
+        $subsetDisplayDiv.hide();
+        //TODO: Breaks on custom subsets. Use JSON object instead of string parsing
+        let bucketStrings = subsetDisplay.split(' (');
+        let number;
+        if (bucketStrings[1]) {
+            number = bucketStrings[1].slice(0, -1);
+        }
+        let bucketText = bucketStrings[0];
+        const bucketLines = bucketText.split('|');
+        let bucketListItems = [];
+        if (number) {
+            bucketListItems.push({'label': ` ${number}`, 'group': 'Number of samples in subset', 'value': number});
+        }
+        bucketListItems.push({'label': '', 'group': 'Number of samples in subset', 'value': ''});
+        let seenRemoved = false;
+        bucketLines.forEach(function (line) {
+            const selectedTrack = line.split('~');
+            selectedTrack[1] = selectedTrack[1] || 'no subset selected';
+            const selectedTracks = selectedTrack[1].split(',');
+            selectedTracks.forEach(function (subset) {
+                bucketListItems.push({'label': subset, 'group': selectedTrack[0], 'value': subset});
+            });
+            if (selectedTrack[0] === 'removed') {
+                seenRemoved = true;
+            } else {
+                bucketListItems.push({'label': '', 'group': selectedTrack[0], 'value': ''});
+            }
+        });
+        if (seenRemoved) {
+            bucketListItems.push({'label': '', 'group': 'removed', 'value': ''});
+        }
+        let subsetListBox = $("<div></div>");
+        subsetListBox.jqxListBox({
+            source: bucketListItems,
+            width: $(`#subset_track_select-${subsetName}`).width(),
+            height: 100,
+            disabled: false,
+            itemHeight: 16,
+            enableSelection: false
+        });
+        $subsetContainer.append(subsetListBox);
+    } else {
+        $resetSubset.hide();
+    }
+}
+
+function selectSubset({subsetName, dataSetTable, canCreateTrack}) {
+    let initSubset = $(`#subset_input-${subsetName}`).val();
+    let initSubsetText = $(`#subset_display-${subsetName}`).text();
+    let currentSubset = initSubset;
+    let manualSelected = new Set();
+    let manualUnselected = new Set();
+
+    let jqxModalContainer = $("<div id='jqxModalContainer'><div id='jqxModal'></div></div>");
+    $(document.body).append(jqxModalContainer);
+    let newDiv = $("<div></div>");
+    jqxModalContainer.append(newDiv);
+    let $windowLoaderDiv = $("<div id='jqxWindowLoader'></div>");
+    $windowLoaderDiv.jqxLoader({isModal: true, imagePosition: 'center'});
+    newDiv.append($windowLoaderDiv);
+    let subsetTextDiv = $("<div style='margin: 10px;'>pre-selected subset: <span id='subsetText'></span><input id='resetPre' type='button' value='Reset to full dataset' hidden></div>");
+    newDiv.append(subsetTextDiv);
+    $("#subsetText").text(initSubsetText);
+    let gridDiv = $("<div id='jqxGridDiv'></div>");
+    newDiv.append(gridDiv);
+    $(window).scrollTop(0);
+    jqxModalContainer.jqxWindow({
+        position: {
+            x: 20,
+            y: 10
+        },
+        maxHeight: "98%",
+        maxWidth: "98%",
+        minHeight: "98%",
+        minWidth: "98%",
+        height: "98%",
+        width: "98%",
+        resizable: false,
+        isModal: true,
+        modalOpacity: 0.3,
+        title: `Create/Update Subset for current dataset: <b>${dataSetTable}</b>`,
+    });
+    jqxModalContainer.on('close', function () {
+        jqxModalContainer.jqxWindow('destroy');
+    });
+    $windowLoaderDiv.jqxLoader('open');
+    fetchGetJson({
+        json_option: 'json_cg_sampleannotation_v1',
+        ctable: dataSetTable,
+        subset: initSubset,
+    }).then((d) => openGrid(d)).finally(() => $windowLoaderDiv.jqxLoader('close'));
+
+    function openGrid({data, columns, datafields}) {
+        let gridSettings = {
+            width: "100%",
+            height: "96%",
+            autosavestate: false,
+            columnsresize: true,
+            sortable: true,
+            showdefaultloadelement: true,
+            filterable: true,
+            showfiltercolumnbackground: false,
+            statusbarheight: 25,
+            showstatusbar: true,
+            renderstatusbar: function (toolbar) {
+                toolbar.append(
+                    `
+                            <div style='width: 100%; height: 100%; display: flex; flex-direction: row; justify-content: space-around;'>
+                                <input  type='button' value='Use selected as subset' id='closeButton' />
+                                <input  type='button' value='Reset to pre-selected' id='resetButton' />
+                                <div id='gridStatus' style='text-align: center; padding-top: 5px;'><span></span></div>
+                                <input  type='button' value='Create Track from selected' id='createTrackButton' />
+                            </div>
+                        `
+                );
+            },
+            selectionmode: 'checkbox',
+        };
+
+        let initNumber = data.length;
+        gridSettings.source = getAdapter({data, datafields});
+        gridSettings.columns = columns;
+        gridDiv.jqxGrid(gridSettings);
+        gridDiv.jqxGrid('selectallrows');
+        $('.jqx-menu-wrapper').css({'z-index': 1900});
+        let gridNumber = gridDiv.jqxGrid('getrows').length;
+        $('#gridStatus').html(`<span>rows:  ${gridNumber}</span>`);
+        $('.jqx-menu-vertical').css({padding: '6px'});
+
+        let closeButton = $("#closeButton");
+        let resetButton = $("#resetButton");
+        let resetPre = $("#resetPre");
+        let createTrackButton = $("#createTrackButton");
+        updateButtons(canCreateTrack, initNumber, initSubset);
+
+        closeButton.on('click', function () {
+            const rowIndexes = gridDiv.jqxGrid('getselectedrowindexes');
+            const rows = gridDiv.jqxGrid('getrows');
+            let selectedSamples = [];
+            let excludedSamples = [];
+            if (manualSelected.size === rowIndexes.length) {
+                rows.forEach((rowData) => {
+                    if (manualSelected.has(rowData.samplenames)) {
+                        selectedSamples.push(rowData.samplenames);
+                    }
+                });
+            } else {
+                rows.forEach((rowData) => {
+                    if (manualUnselected.has(rowData.samplenames)) {
+                        excludedSamples.push(rowData.samplenames);
+                    }
+                });
+            }
+            const filterInformation = gridDiv.jqxGrid('getfilterinformation');
+            let multipleSelections = [];
+            let multipleNumberSelections = [];
+            filterInformation.forEach((filterInfos) => {
+                $windowLoaderDiv.jqxLoader('open');
+                let track = filterInfos.datafield;
+                let selectedGroups = [];
+                let numericConditions = [];
+                filterInfos.filter.getfilters().forEach((filterInfo) => {
+                    if (filterInfo.type === 'numericfilter') {
+                        numericConditions.push(
+                            `${filterInfo.condition}^${filterInfo.value}`
+                        );
+                    } else {
+                        selectedGroups.push(filterInfo.value);
+                    }
+                });
+                if (numericConditions.length) {
+                    multipleNumberSelections.push(`${track}:${numericConditions.join(',')}`);
+                }
+                if (selectedGroups.length) {
+                    multipleSelections.push(`${track}:${selectedGroups.join(',')}`);
+                }
+            });
+            if (selectedSamples.length) {
+                multipleSelections.push(`samplenames:${selectedSamples.join(',')}`);
+            }
+            let multipleSelectionsString = multipleSelections.join(';');
+            let multipleNumberSelectionsString = multipleNumberSelections.join(';');
+            let excludedSamplesString = excludedSamples.join(',');
+
+            fetchGetJson({
+                json_option: 'json_subset_v1',
+                subset_table: dataSetTable,
+                subset: currentSubset,
+                selected: multipleSelectionsString,
+                selected_numeric: multipleNumberSelectionsString,
+                blacklisted: excludedSamplesString
+            }).then(({subset, returnString}) => {
+                setSubset({subsetName: subsetName, subsetValue: subset, subsetDisplay: returnString});
+                currentSubset = subset;
+            }).finally(() => {
+                $windowLoaderDiv.jqxLoader('close');
+                jqxModalContainer.jqxWindow('close');
+            });
+        });
+        const dataColumns = columns.filter(column => column.datafield !== 'link');
+        createTrackButton.on('click', () => {
+            const selectedRowIndexSet = new Set(gridDiv.jqxGrid('getselectedrowindexes'));
+            const indexProperty = gridDiv.jqxGrid('getfilterinformation').length ? 'dataindex' : 'boundindex';
+            trackFromGrid({
+                columns: dataColumns,
+                rows: gridDiv.jqxGrid('getrows').filter(row => selectedRowIndexSet.has(row[indexProperty])),
+                dataSetTable: dataSetTable,
+            });
+        });
+
+        resetButton.on('click', function () {
+            $windowLoaderDiv.jqxLoader('open');
+            currentSubset = initSubset;
+            closeButton.jqxButton({'disabled': true, template: "",});
+            resetButton.jqxButton({'disabled': true, template: "",});
+            createTrackButton.jqxButton({'disabled': true, template: "",});
+
+            fetchGetJson({
+                json_option: 'json_cg_sampleannotation_v1',
+                ctable: dataSetTable,
+                subset: initSubset,
+            }).then((d) => {
+                gridSettings.source = getAdapter(d);
+                gridDiv.jqxGrid('clear');
+                gridDiv.jqxGrid(gridSettings);
+                gridDiv.jqxGrid('selectallrows');
+                updateButtons(canCreateTrack, initNumber, initSubset);
+            });
+        });
+
+        resetPre.on('click', function () {
+            currentSubset = '';
+            initSubset = '';
+            $("#subsetText").text('None');
+            closeButton.jqxButton({'disabled': true, template: "",});
+            resetButton.jqxButton({'disabled': true, template: "",});
+            createTrackButton.jqxButton({'disabled': true, template: "",});
+            resetPre.jqxButton({'disabled': true, template: "",});
+            resetPre.hide();
+
+            fetchGetJson({
+                json_option: 'json_cg_sampleannotation_v1',
+                ctable: dataSetTable,
+                subset: '',
+            }).then((d) => {
+                gridSettings.source = getAdapter(d);
+                gridDiv.jqxGrid('clear');
+                gridDiv.jqxGrid(gridSettings);
+                gridDiv.jqxGrid('selectallrows');
+                $('#gridStatus').html(`<span>rows:  ${gridDiv.jqxGrid('getrows').length}</span>`);
+                initNumber = d['data'].length;
+            });
+        });
+
+        gridDiv.on('filter', function () {
+            updateButtons(canCreateTrack, initNumber, initSubset);
+        });
+
+        gridDiv.on('rowselect', function (event) {
+            let row = event.args.row;
+            if (row) {
+                manualSelected.add(row.samplenames);
+                if (manualUnselected.has(row.samplenames)) {
+                    manualUnselected.delete(row.samplenames);
+                }
+            }
+            updateButtons(canCreateTrack, initNumber, initSubset);
+        });
+
+        gridDiv.on('rowunselect', function (event) {
+            let row = event.args.row;
+            if (row) {
+                manualUnselected.add(row.samplenames);
+                if (manualSelected.has(row.samplenames)) {
+                    manualSelected.delete(row.samplenames);
+                }
+            }
+            updateButtons(canCreateTrack, initNumber, initSubset);
+        });
+    }
+
+    function updateButtons(canCreateTrack, initNumber, initSubset) {
+        const $gridStatus = $('#gridStatus');
+        setTimeout(function () {
+            let gridDiv = $('#jqxGridDiv');
+            let closeButton = $("#closeButton");
+            let resetButton = $("#resetButton");
+            let resetPre = $("#resetPre");
+            let createTrackButton = $("#createTrackButton");
+            if (initNumber > gridDiv.jqxGrid('getrows').length || initNumber > gridDiv.jqxGrid('getselectedrowindexes').length) {
+                if (gridDiv.jqxGrid('getselectedrowindexes').length > 0) {
+                    closeButton.jqxButton({'disabled': false, template: "info",});
+                    resetButton.jqxButton({'disabled': false, template: "info",});
+                    if (canCreateTrack) {
+                        createTrackButton.jqxButton({'disabled': false, template: "info",});
+                    }
+                }
+            } else {
+                closeButton.jqxButton({'disabled': true, template: "",});
+                resetButton.jqxButton({'disabled': true, template: "",});
+                createTrackButton.jqxButton({'disabled': true, template: "",});
+                resetPre.jqxButton({'disabled': true, template: "",});
+            }
+            if (initSubset) {
+                if (canCreateTrack) {
+                    createTrackButton.jqxButton({'disabled': false, template: "info",});
+                }
+                resetPre.jqxButton({'disabled': false, template: "info",});
+                resetPre.css({'height': 18, 'margin-left': '5px', 'padding': '2px'});
+                resetPre.show();
+            }
+
+            const rows = gridDiv.jqxGrid('getrows');
+            const selectedRowIndexes = gridDiv.jqxGrid('getselectedrowindexes');
+            const selectionCurrent = [];
+            selectedRowIndexes.forEach((rowIndex) => {
+                const data = gridDiv.jqxGrid('getrowdata', rowIndex);
+                rows.filter((d) => {
+                    if (d.samplenames === data.samplenames) {
+                        selectionCurrent.push(d.samplenames);
+                    }
+                });
+            });
+            $gridStatus.html(`<span>rows:  ${selectionCurrent.length}</span>`);
+
+        }, 0);
+    }
+
+    function getAdapter({datafields, data}) {
+        let source = {
+            datatype: "json",
+            datafields,
+            localdata: data
+        };
+        return new $.jqx.dataAdapter(source);
+    }
+}
+
+function resetSubsetSelection(subsetName) {
+    $(`#subset_track_select-${subsetName}`).val('');
+    setSubset({subsetName: subsetName});
+}
+
+function sampleFilterFromSelect({subsetName, dataSetTable}) {
+    let $subsetTrackSelect = $(`#subset_track_select-${subsetName}`);
+    let offset = $subsetTrackSelect.offset();
+    let selection = $subsetTrackSelect.val();
+    let initSubset = $(`#subset_input-${subsetName}`).val();
+    if (selection === '') {
+        resetSubsetSelection(subsetName);
+    } else {
+        $("#windowDiv").remove();
+        fetchGetJson({
+            json_option: 'json_subset_track_options',
+            track: selection,
+            subset_table: dataSetTable,
+            subset: initSubset,
+        }).then((d) => openTrackOptionSelect(d));
+    }
+
+    function openTrackOptionSelect(trackOptions) {
+        let initSubsetText = $(`#subset_display-${subsetName}`).text();
+        let windowDiv = $(`
+            <div id='windowDiv'>
+                <div id='hdr' style='overflow: auto;'>${selection} - ${initSubsetText}</div>
+                <div id='content'>
+                    <div id='jqxList'></div>
+                    <div id='check' style='margin-top: 15px; margin-right: 10px'><span>check-all</span></div>
+                    <div style='float: right; margin-top: 15px;'>
+                        <input type='button' id='ok' value='OK' style='margin-right: 10px'>
+                        <input type='button' id='cancel' value='Cancel'>
+                    </div>
+                </div>
+            </div>
+        `);
+        $('body').append(windowDiv);
+        let jqxList = $("#jqxList");
+        let okButton = $('#ok');
+        let cancelButton = $('#cancel');
+        let checkButton = $('#check');
+        windowDiv.jqxWindow({
+            position: {
+                x: offset.left,
+                y: offset.top
+            },
+            height: 440,
+            width: 400,
+            resizable: false,
+            isModal: true,
+            modalOpacity: 0.3,
+            okButton: okButton,
+            cancelButton: cancelButton,
+            initContent: function () {
+                jqxList.jqxListBox({
+                    source: trackOptions,
+                    checkboxes: true,
+                    width: 390,
+                    height: 300
+                });
+                okButton.jqxButton({
+                    width: '65px'
+                });
+                cancelButton.jqxButton({
+                    width: '65px'
+                });
+                checkButton.jqxCheckBox({
+                    width: 120, height: 25, checked: false
+                });
+                checkButton.on('click', function () {
+                    const checked = checkButton.val();
+                    if (checked) {
+                        jqxList.jqxListBox('checkAll');
+                        $('#check').children('span')[0].innerHTML = 'uncheck all';
+                    } else if (false === checked) {
+                        jqxList.jqxListBox('uncheckAll');
+                        $('#check').children('span')[0].innerHTML = 'check all';
+                    } else {
+                        $('#check').children('span')[0].innerHTML = 'check all';
+                    }
+                });
+                $("#jqxList").on('click', function () {
+                    const items = jqxList.jqxListBox('getCheckedItems');
+                    if (items.length) {
+                        if (items.length === trackOptions.length) {
+                            checkButton.val(true);
+                            checkButton.find('span').innerHTML = 'uncheck all';
+                        } else {
+                            checkButton.val(null);
+                            checkButton.find('span').innerHTML = 'uncheck all';
+                        }
+                    } else {
+                        checkButton.val(false);
+                        checkButton.find('span').innerHTML = 'check all';
+                    }
+                });
+                okButton.focus();
+                okButton.on('click', function () {
+                    const items = jqxList.jqxListBox('getCheckedItems');
+                    if (items.length > 0) {
+                        let values = items.map(({value}) => value);
+                        let selected = `${selection}:${values.join(',')}`;
+                        fetchGetJson({
+                            json_option: 'json_subset_v1',
+                            subset_table: dataSetTable,
+                            subset: initSubset,
+                            selected: selected,
+                        }).then(({subset, returnString}) => {
+                            setSubset({subsetName: subsetName, subsetValue: subset, subsetDisplay: returnString});
+                        });
+                    }
+                });
+            }
+        });
+    }
+}
+
+export default function (args) {
+    const {
+        dataSetTable,
+        subsetValue,
+        subsetName,
+        subsetDisplay,
+        canCreateTrack,
+    } = args;
+    let $subsetTrackSelect = $(`#subset_track_select-${subsetName}`);
+    let $changeSubset = $(`<span class="advanced-gear-character" title='Create Subset Advanced'>⚙</span>`);
+    let $resetSubset = $(`<span id='reset_subset-${subsetName}' class="remove-x-character" title='Reset Subset'>✘</span>`);
+    $subsetTrackSelect.after($changeSubset);
+    $changeSubset.after($resetSubset);
+    setSubset({subsetName: subsetName, subsetValue: subsetValue, subsetDisplay: subsetDisplay});
+    $subsetTrackSelect.on('change', function () {
+        sampleFilterFromSelect({subsetName: subsetName, dataSetTable: dataSetTable});
+    });
+    $subsetTrackSelect.closest("form").bind('reset', function () {
+        resetSubsetSelection(subsetName);
+    });
+    $changeSubset.on('click', function (e) {
+        e.preventDefault();
+        selectSubset({
+            subsetName: subsetName,
+            dataSetTable: dataSetTable,
+            canCreateTrack: canCreateTrack,
+        });
+    });
+    $resetSubset.on('click', function () {
+        resetSubsetSelection(subsetName);
+    });
+}

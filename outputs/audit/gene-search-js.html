@@ -1,0 +1,146 @@
+import {fetchGetJson} from './utils/fetch.js';
+import {promiseRequireJS} from './utils/promiseRequireJS.js';
+
+const [$] = await promiseRequireJS(['jquery', 'jqx-all', 'jquery-ui']);
+
+export default function ({inputName, datasetTable}) {
+    geneReporterSearch({
+        geneInput: document.getElementById(`${inputName}-gene_input`),
+        reporterInput: document.getElementById(`${inputName}-reporter_input`),
+        advancedButton: document.getElementById(`${inputName}-advanced_button`),
+        datasetTable: datasetTable,
+    });
+}
+
+export function geneReporterSearch({geneInput, reporterInput, advancedButton, datasetTable, changeFunction}) {
+    reporterInput.dataset.selected = reporterInput.value;
+    geneInput.dataset.selected = geneInput.value;
+    addReporterQueryAutocomplete(geneInput, 'gene_symbol');
+    addReporterQueryAutocomplete(reporterInput, 'reporter');
+    advancedButton.onclick = buildReporterGridModal;
+
+    function selectReporter(reporter, gene) {
+        reporterInput.value = reporterInput.dataset.selected = reporter;
+        geneInput.value = geneInput.dataset.selected = gene;
+        if (changeFunction) {
+            changeFunction(reporter, gene);
+        }
+    }
+
+    function addReporterQueryAutocomplete(queryInput, searchBy) {
+        $(queryInput).autocomplete({
+            minLength: 2,
+            selectFirst: true,
+            delay: 350,
+            autoFocus: true,
+            source: function (request, response) {
+                fetchGetJson({
+                    json_option: 'json_find_reporter_in_dataset_v1',
+                    dataset: datasetTable,
+                    search_by: searchBy,
+                    query: request.term
+                }).then((data) => {
+                    data.forEach(x => x.label = `${x.gene_symbol} / ${x.reporter}`);
+                    response(data);
+                    reporterInput.classList.remove('ui-autocomplete-loading');
+                });
+            },
+            select: function (event, ui) {
+                selectReporter(ui.item.reporter, ui.item.gene_symbol);
+                return false;
+            },
+            change: function () {
+                if (queryInput.value === '') {
+                    selectReporter('', '');
+                } else {
+                    selectReporter(reporterInput.dataset.selected, geneInput.dataset.selected);
+                }
+            }
+        });
+    }
+
+    function buildReporterGridModal() {
+        const modalDiv = document.createElement('div');
+        const modalHeaderDiv = document.createElement('div');
+        modalDiv.appendChild(modalHeaderDiv);
+        const modalContentDiv = document.createElement('div');
+        modalDiv.appendChild(modalContentDiv);
+        const gridDiv = document.createElement('div');
+        modalContentDiv.appendChild(gridDiv);
+
+        $(modalDiv).jqxWindow({
+            title: 'Dataset reporters',
+            minWidth: '90%',
+            maxWidth: '90%',
+            minHeight: '90%',
+            maxHeight: '90%',
+            position: {
+                x: window.scrollX + (window.innerWidth / 20),
+                y: window.scrollY + (window.innerHeight / 20)
+            },
+            isModal: true
+        });
+        $(modalDiv).on('close', function () {
+            $(modalDiv).jqxWindow('destroy');
+        });
+
+        const source = {
+            url: window.location.origin + window.location.pathname,
+            data: {
+                json_option: 'json_dataset_genes_grid',
+                dataset: datasetTable
+            },
+            datatype: 'json',
+            datafields: [
+                {name: 'reporter', type: 'string'},
+                {name: 'gene_symbol', type: 'string'},
+                {name: 'gene_id', type: 'string'},
+                {name: 'average', type: 'number'},
+                {name: 'present_count', type: 'number'},
+                {name: 'present_average', type: 'number'},
+                {name: 'r2_default', type: 'bool'}
+            ],
+            filter: function () {
+                $(gridDiv).jqxGrid('updatebounddata', 'filter');
+            },
+            sort: function () {
+                $(gridDiv).jqxGrid('updatebounddata', 'sort');
+            },
+            root: 'Rows',
+            beforeprocessing: function (data) {
+                source.totalrecords = data.TotalRows;
+            }
+        };
+
+        $(gridDiv).jqxGrid({
+            width: '100%',
+            autoheight: true,
+            columnsresize: true,
+            filterable: true,
+            showfilterrow: true,
+            sortable: true,
+            pageable: true,
+            pagesize: 100,
+            pagermode: 'simple',
+            virtualmode: true,
+            source: new $.jqx.dataAdapter(source),
+            rendergridrows: function (obj) {
+                return obj.data;
+            },
+            columns: [
+                {text: 'reporter', datafield: 'reporter'},
+                {text: 'gene symbol', datafield: 'gene_symbol'},
+                {text: 'gene ID', datafield: 'gene_id'},
+                {text: 'average', datafield: 'average', filtertype: 'number'},
+                {text: 'present count', datafield: 'present_count', filtertype: 'number'},
+                {text: 'present average', datafield: 'present_average', filtertype: 'number'},
+                {text: 'R2 default', datafield: 'r2_default', filtertype: 'bool'}
+            ]
+        });
+        $(gridDiv).on('rowselect', function (event) {
+            selectReporter(event.args.row.reporter, event.args.row.gene_symbol);
+            $(modalDiv).jqxWindow('destroy');
+        });
+    }
+}
+

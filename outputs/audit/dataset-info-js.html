@@ -1,0 +1,34 @@
+import {showDatasetCard} from './general/datasetCard.js';
+import {promiseRequireJS} from './utils/promiseRequireJS.js';
+
+const [$] = await promiseRequireJS(['jquery', 'jqx-all']);
+
+$('.open-dataset-info').on('click', function () {
+    const dataset = $(this).attr('data-dataset');
+    if (dataset) {
+        const datasetCardModalContainer = $("<div><div id='datasetCard'></div></div>");
+        $(document.body).append(datasetCardModalContainer);
+        datasetCardModalContainer.jqxWindow({
+            position: {
+                x: 20,
+                y: 10
+            },
+            maxHeight: "98%",
+            maxWidth: "98%",
+            minHeight: "98%",
+            minWidth: "98%",
+            height: "98%",
+            width: "98%",
+            resizable: false,
+            isModal: true,
+            modalOpacity: 0.3,
+            title: 'Data set details',
+        });
+        datasetCardModalContainer.on('close', function () {
+            datasetCardModalContainer.jqxWindow('destroy');
+            $(".jqx-window-modal").remove();
+        });
+        showDatasetCard({containerId: 'datasetCard', dataset: dataset});
+    }
+});
+

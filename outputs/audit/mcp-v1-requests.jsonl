@@ -1,0 +1,6 @@
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18"}}
+{"jsonrpc":"2.0","method":"notifications/initialized"}
+{"jsonrpc":"2.0","id":2,"method":"tools/list"}
+{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_r2_expression","arguments":{"gene":"HLX","limit":2}}}
+{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"plot_r2_subgroup_test","arguments":{"gene":"HLX"}}}
+{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"build_gene_page","arguments":{"gene":"HLX"}}}

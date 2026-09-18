@@ -1,0 +1,11 @@
+ModelID,CellLineName,OncotreeLineage,OncotreePrimaryDisease,OncotreeSubtype,OncotreeCode,gene_effect,is_medulloblastoma,gene
+"ACH-000055","D283 Med","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",-1.19295058061461,TRUE,"SLC2A1"
+"ACH-000095","D341 Med","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",-0.996065060984957,TRUE,"SLC2A1"
+"ACH-000211","Daoy","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",-0.450244707251475,TRUE,"SLC2A1"
+"ACH-000776","ONS-76","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",-0.642013703876761,TRUE,"SLC2A1"
+"ACH-001052","D384","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",NA,TRUE,"SLC2A1"
+"ACH-001053","D425","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",-0.678497430492144,TRUE,"SLC2A1"
+"ACH-001054","D458","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",-0.592102937597103,TRUE,"SLC2A1"
+"ACH-001055","D556","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",NA,TRUE,"SLC2A1"
+"ACH-001201","SU-MB-002","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",NA,TRUE,"SLC2A1"
+"ACH-001232","UW228","CNS/Brain","Embryonal Tumor","Medulloblastoma","MBL",-0.257271749701201,TRUE,"SLC2A1"

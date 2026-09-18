@@ -1,0 +1,17 @@
+[
+  {"name":"landing","url":"https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?table=ps_avgpres_gse85217geo763_hugene11t"},
+  {"name":"guest","fields":{"method":"guest","open_page":"auth"}},
+  {"name":"dataset","url":"https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?table=ps_avgpres_gse85217geo763_hugene11t"},
+  {"name":"gene-form","fields":{"perspective":"singleds","table":"ps_avgpres_gse85217geo763_hugene11t","option":"displaygene2_single_reporter","button1":"Next"}},
+  {"name":"sample-overview","fields":{"perspective":"singleds","table":"ps_avgpres_gse85217geo763_hugene11t","option":"sample_overview","button1":"Next"}},
+  {"name":"gene-search-js","url":"https://hgserver1.amc.nl/r2/assets/v393/js/src/geneReporterSearch.js"},
+  {"name":"subset-js","url":"https://hgserver1.amc.nl/r2/assets/v393/js/src/subsetBuilder.js"},
+  {"name":"dataset-info-js","url":"https://hgserver1.amc.nl/r2/assets/v393/js/src/datasetInfoModal.js"},
+  {"name":"fetch-js","url":"https://hgserver1.amc.nl/r2/assets/v393/js/src/utils/fetch.js"},
+  {"name":"dataset-card-js","url":"https://hgserver1.amc.nl/r2/assets/v393/js/src/general/datasetCard.js"},
+  {"name":"hlx-reporters","url":"https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?json_option=json_find_reporter_in_dataset_v1&dataset=ps_avgpres_gse85217geo763_hugene11t&search_by=gene_symbol&query=HLX"},
+  {"name":"annotations","url":"https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?json_option=json_cg_sampleannotation_v1&ctable=ps_avgpres_gse85217geo763_hugene11t&subset="},
+  {"name":"dataset-info","url":"https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?json_option=json_dataset_info&table=ps_avgpres_gse85217geo763_hugene11t"},
+  {"name":"track-info","url":"https://hgserver1.amc.nl/cgi-bin/r2/main.cgi?json_option=json_dataset_info_tracks&table=ps_avgpres_gse85217geo763_hugene11t"},
+  {"name":"hlx-expression","fields":{"table":"ps_avgpres_gse85217geo763_hugene11t","option":"display2","analysis_type":"single_reporter","factor":"7909890","cortype":"transform_log2","subset":"","grouping_track":"subgroup","graphtype":"yy_i"}}
+]

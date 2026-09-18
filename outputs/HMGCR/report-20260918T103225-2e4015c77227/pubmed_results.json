@@ -1,0 +1,61 @@
+{
+  "gene": "HMGCR",
+  "disease_filter": "medulloblastoma",
+  "total_matches": 1,
+  "articles": [
+    {
+      "pmid": "41923098",
+      "title": "Medulloblastoma response to mevalonate pathway inhibition is independent of p53 status.",
+      "journal": "Biology direct",
+      "publication_date": "2026 Apr 01",
+      "electronic_date": "2026 04 01",
+      "doi": "10.1186/s13062-026-00765-9",
+      "doi_url": "https://doi.org/10.1186%2Fs13062-026-00765-9",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/41923098/",
+      "description": "Moreover, p53 silencing had no effect in the mRNA expression of the key MVP enzymes 3-hydroxy-3-methylglutaryl-CoA reductase (HMGCR), mevalonate kinase (MVK), mevalonate decarboxylase (MVD), and farnesyl diphosphate synthase (FDPS).",
+      "description_source": "abstract_sentence_excerpt",
+      "abstract": "Medulloblastoma (MB) is the most common primary solid paediatric brain tumour. It arises in the cerebellum, the part of the brain responsible for equilibrium and coordination. Molecular profiling has identified four MB subgroups named Wingless (WNT), Sonic hedgehog (SHH), Group 3 (G3), and Group 4 (G4), each of which possesses distinct genetic backgrounds and clinical outcomes. The treatment of MB requires intensive multimodal therapy that is associated with significant long-term side effects. Despite this necessary aggressive approach, MB remains fatal in approximately 30% of patients due to tumour recurrence and/or metastatic spread to the spinal cord. Thus, there is an urgent need for novel, less toxic and effective therapies for MB. The tumour-suppressor p53 is mutated in up to 30% of SHH-MB tumours and is associated with significantly poorer patient outcomes. Mutations in p53 have been acknowledged to confer oncogenic \"gain-of-function\" properties, including activation of the mevalonate pathway (MVP), which drives cholesterol and isoprenoid biosynthesis. MB is sensitive to inhibition of the MVP by treatment with simvastatin, leading us to hypothesise that targeting the mutant p53 (mutp53)-MVP axis could further sensitise mutp53 SHH-MB to statins. In this study, we show that silencing p53 does not alter simvastatin sensitivity in either mutp53 SHH-MB or wild-type p53 G3-MB cells. Moreover, p53 silencing had no effect in the mRNA expression of the key MVP enzymes 3-hydroxy-3-methylglutaryl-CoA reductase (HMGCR), mevalonate kinase (MVK), mevalonate decarboxylase (MVD), and farnesyl diphosphate synthase (FDPS). Silencing p53 also failed to affect simvastatin-induced cell cycle arrest or impact the sensitivity of MB cells treated with simvastatin in combination with hypoxia, X-ray or azacitidine, an epigenetic therapy with DNA methyltransferase inhibition. Collectively, our findings indicate that MVP function is independent of p53 in MB.",
+      "publication_types": [
+        "Journal Article"
+      ],
+      "notices": [],
+      "retracted": false
+    }
+  ],
+  "provenance": {
+    "source": "NCBI PubMed E-utilities",
+    "query": "(\"HMGCR\"[Title/Abstract] OR \"LDLCQ3\"[Title/Abstract] OR \"LGMDR28\"[Title/Abstract] OR \"MYPLG\"[Title/Abstract]) AND \"medulloblastoma\"[Title/Abstract]",
+    "query_translation": "(\"HMGCR\"[Title/Abstract] OR \"LGMDR28\"[Title/Abstract]) AND \"medulloblastoma\"[Title/Abstract]",
+    "searched_terms": [
+      "HMGCR",
+      "LDLCQ3",
+      "LGMDR28",
+      "MYPLG"
+    ],
+    "alias_resolution": {
+      "aliases": ["LDLCQ3", "LGMDR28", "MYPLG"],
+      "gene_id": "3156",
+      "official_symbol": "HMGCR",
+      "description": "3-hydroxy-3-methylglutaryl-CoA reductase",
+      "status": "Human gene symbol verified against NCBI Gene; documented aliases included"
+    },
+    "sort": "PubMed publication date descending (pub_date), not indexing date",
+    "date_definition": "Journal citation date displayed verbatim, with electronic publication date separately when provided; partial dates are not invented",
+    "summary_method": "One verbatim abstract sentence, preferring gene mentions and conclusions/results; title-only fallback when no abstract is supplied",
+    "screening": {
+      "records_checked": 1,
+      "excluded_pmids": [],
+      "rule": "Require a standalone gene symbol or alias in title/abstract; hyphenated drug codes such as HLX-02 do not qualify",
+      "maximum_records": 50
+    },
+    "limitations": "Keyword/alias matches can include unrelated uses or non-human studies; no implication that a paper studies medulloblastoma unless separately checked",
+    "search_warnings": {
+      "phrasesignored": [],
+      "quotedphrasesnotfound": ["\"LDLCQ3\"[Title/Abstract]", "\"MYPLG\"[Title/Abstract]"],
+      "outputmessages": []
+    },
+    "retrieved_at": "2026-09-18T10:32:25Z",
+    "cache_hit": false,
+    "raw_source_dir": "C:/Users/dng/Documents/r2DepmapMCPtest/r2-depmap/.cache/r2-depmap/pubmed_sources/retrieval-2e40797a32f9"
+  }
+}

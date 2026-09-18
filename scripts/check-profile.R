@@ -1,0 +1,8 @@
+for(f in c('common','cache','r2_client','r2_expression','study','enrichment','profile_sources','profile_statistics'))source(file.path('R',paste0(f,'.R')))
+cfg<-read_server_config('config/defaults.json');cfg$output_dir<-normalizePath('outputs',winslash='/')
+r<-get_r2_expression(cfg,'HLX')
+html<-paste(readLines('outputs/audit/profile-sources/survival-result.html',warn=FALSE),collapse='\n')
+js<-paste(readLines('outputs/audit/profile-sources/kaplan.js',warn=FALSE),collapse='\n')
+s<-verify_r2_survival_payload(html,js,r);print(s$provenance);print(summary(s$data$time))
+clinical<-profile_clinical(r,s);print(lapply(clinical,function(x)x$survival$statistics %||% x$survival$reason))
+cat('Subtype check\n');print(profile_group_comparison(r$data,'subtype','HLX Cavalli subtypes')$statistics)

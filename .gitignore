@@ -1,0 +1,6 @@
+.R-library/
+.cache/
+.Rhistory
+.RData
+data/
+output/
